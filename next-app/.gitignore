@@ -1,0 +1,5 @@
+# See .gitignore in root
+node_modules/
+.next/
+*.tsbuildinfo
+.env.local

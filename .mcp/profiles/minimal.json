@@ -1,0 +1,38 @@
+{
+  "description": "Minimal Profile - Git operations only (fastest startup)",
+  "use_case": "Quick fixes, git operations, general coding without CMS",
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "description": "GitHub - Repository access, issues, PRs (npm version)",
+      "required": true
+    }
+  },
+  "mcpjsonServers": {
+    "io.github.github/github-mcp-server": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "requestInit": {
+        "headers": {
+          "Authorization": "Bearer ${GITHUB_MCP_TOKEN}"
+        }
+      },
+      "description": "GitHub MCP - Official GitHub integration via HTTP API",
+      "required": false,
+      "note": "Alternative to npm github. Enable only one GitHub MCP."
+    }
+  },
+  "metadata": {
+    "profile": "minimal",
+    "tools_count": 1,
+    "estimated_tokens": 5123,
+    "startup_time_ms": 800
+  }
+}

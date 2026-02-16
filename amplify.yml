@@ -1,0 +1,54 @@
+version: 1
+
+# =============================================================================
+# AWS Amplify Monorepo Build Configuration
+# Project: {{PROJECT_NAME}}
+# Structure: Monorepo with npm workspaces (next-app, studio)
+# =============================================================================
+
+applications:
+  - appRoot: next-app
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            # Install dependencies from monorepo root
+            - cd ..
+            - npm ci
+            - cd next-app
+        build:
+          commands:
+            # Build Next.js
+            - npm run build
+      artifacts:
+        # For Next.js 14+ SSR: baseDirectory relative to appRoot
+        baseDirectory: .next
+        files:
+          - '**/*'
+      cache:
+        paths:
+          # Cache relative to monorepo root
+          - ../node_modules/**/*
+          - node_modules/**/*
+          - .next/cache/**/*
+
+# =============================================================================
+# REQUIRED AWS AMPLIFY CONSOLE CONFIGURATION:
+# =============================================================================
+# 1. Environment Variables (to be configured):
+#    - NEXT_PUBLIC_SANITY_PROJECT_ID={{SANITY_PROJECT_ID}}
+#    - NEXT_PUBLIC_SANITY_DATASET={{SANITY_DATASET}}
+#    - SANITY_API_READ_TOKEN=<your-token>
+#    - NEXT_PUBLIC_GA4_ID={{GA4_ID}}
+#    - NEXT_PUBLIC_SEGMENT_WRITE_KEY={{SEGMENT_WRITE_KEY}}
+#
+# 2. Build Settings:
+#    - Platform: WEB_COMPUTE (Next.js - SSR)
+#    - Node.js version: 22
+#    - App type: Monorepo
+#
+# 3. Monorepo Configuration:
+#    - appRoot: next-app (specified in applications[])
+#    - Build commands run from appRoot
+#    - Dependencies installed from root (..)
+# =============================================================================

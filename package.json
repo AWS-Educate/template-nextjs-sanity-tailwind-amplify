@@ -1,0 +1,34 @@
+{
+  "name": "{{PROJECT_SLUG}}",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "next-app",
+    "studio"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=next-app\" \"npm run dev --workspace=studio\"",
+    "build": "npm run build --workspace=next-app",
+    "build:studio": "npm run build --workspace=studio",
+    "start": "npm run start --workspace=next-app",
+    "lint": "npm run lint --workspace=next-app",
+    "format": "prettier --cache --write ."
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-packagejson"
+    ],
+    "semi": false,
+    "singleQuote": true
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "esbuild": "^0.27.2",
+    "prettier": "3.3.3",
+    "prettier-plugin-packagejson": "2.5.1"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}

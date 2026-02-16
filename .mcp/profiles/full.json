@@ -1,0 +1,108 @@
+{
+  "description": "Full Profile - All MCPs (marketing campaigns and complex integrations)",
+  "use_case": "Marketing tag setup, complex multi-tool workflows (5% of sessions)",
+  "note": "Salesforce permanently removed - Academia Semillas is an educational website, not a CRM system",
+  "mcpServers": {
+    "sanity": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@sanity/mcp-server@latest"
+      ],
+      "env": {
+        "SANITY_PROJECT_ID": "${SANITY_PROJECT_ID}",
+        "SANITY_DATASET": "${SANITY_DATASET}",
+        "SANITY_API_TOKEN": "${SANITY_API_TOKEN}",
+        "MCP_USER_ROLE": "editor"
+      },
+      "description": "Sanity CMS - Content management and queries for Academia Semillas project",
+      "required": true
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "description": "GitHub - Repository access, issues, PRs (npm version)",
+      "required": true
+    },
+    "google-search-console": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-server-gsc"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${PROJECT_ROOT}/.mcp/credentials/google-cloud.json"
+      },
+      "description": "Google Search Console - SEO analytics and site performance",
+      "required": true
+    },
+    "google-analytics": {
+      "command": "pipx",
+      "args": [
+        "run",
+        "analytics-mcp"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${PROJECT_ROOT}/.mcp/credentials/google-cloud.json",
+        "GOOGLE_CLOUD_PROJECT": "${GOOGLE_CLOUD_PROJECT}"
+      },
+      "description": "Google Analytics - Web analytics and user behavior tracking",
+      "required": true
+    },
+    "google-tag-manager": {
+      "command": "pipx",
+      "args": [
+        "run",
+        "gtm-mcp"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "${PROJECT_ROOT}/.mcp/credentials/google-cloud.json",
+        "GOOGLE_PROJECT_ID": "${GOOGLE_CLOUD_PROJECT}"
+      },
+      "description": "Google Tag Manager - Marketing tags and analytics configuration",
+      "required": true
+    },
+    "shortio": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://ai-assistant.short.io/mcp",
+        "--header",
+        "Authorization: ${SHORTIO_API_KEY}"
+      ],
+      "env": {
+        "SHORTIO_API_KEY": "${SHORTIO_API_KEY}"
+      },
+      "description": "Short.io - URL shortening and link management",
+      "required": true
+    }
+  },
+  "mcpjsonServers": {
+    "io.github.github/github-mcp-server": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "requestInit": {
+        "headers": {
+          "Authorization": "Bearer ${GITHUB_MCP_TOKEN}"
+        }
+      },
+      "description": "GitHub MCP - Official GitHub integration via HTTP API",
+      "required": false,
+      "note": "Alternative to npm github. Enable only one GitHub MCP."
+    }
+  },
+  "metadata": {
+    "profile": "full",
+    "tools_count": 6,
+    "estimated_tokens": 40502,
+    "startup_time_ms": 4500,
+    "daily_cost_usd": 3.24,
+    "note": "Requires Google Cloud credentials in .mcp/credentials/google-cloud.json"
+  }
+}

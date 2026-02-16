@@ -1,0 +1,14 @@
+# Dependencies
+node_modules
+
+# Build
+dist
+.next
+
+# Env
+.env
+.env.local
+
+# Misc
+.DS_Store
+*.log

@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "context": {
+    "project": "{{PROJECT_NAME}}",
+    "domain": "{{SITE_URL}}",
+    "target_audience": "Your target audience description",
+    "business_type": "Your business type"
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "2"
+  },
+  "technologies": {
+    "frontend": ["Next.js", "React", "TypeScript"],
+    "frameworks": ["Tailwind CSS"],
+    "cms": ["Sanity CMS"],
+    "tools": ["Git", "npm"],
+    "optimization": ["next/image", "ISR", "Edge Runtime"]
+  },
+  "coding_standards": {
+    "typescript": {
+      "strict": true,
+      "noImplicitAny": true,
+      "typeGen": "Use Sanity TypeGen"
+    },
+    "css": {
+      "methodology": "Tailwind Utility-First",
+      "approach": "Mobile-first",
+      "organization": "Component-based"
+    },
+    "react": {
+      "patterns": ["Server Components", "Client Components"],
+      "performance": ["Lazy loading", "Code splitting", "Memoization"]
+    }
+  },
+  "content_guidelines": {
+    "tone": "Professional, clear, concise",
+    "keywords": [
+      "your-primary-keyword",
+      "your-secondary-keyword"
+    ],
+    "image_naming": "descriptive-context-{{PROJECT_SLUG}}.webp",
+    "url_structure": "/your-url-structure"
+  },
+  "common_tasks": [
+    "Create new content pages",
+    "Optimize forms",
+    "Improve SEO",
+    "Implement new components",
+    "Optimize images and performance",
+    "Add structured data (Schema.org)"
+  ],
+  "quality_checks": [
+    "Responsive design (mobile, tablet, desktop)",
+    "Accessibility (alt text, ARIA labels, contrast)",
+    "SEO (meta tags, headings, friendly URLs)",
+    "Performance (Lighthouse score >90)",
+    "Cross-browser compatibility",
+    "TypeScript type safety"
+  ]
+}

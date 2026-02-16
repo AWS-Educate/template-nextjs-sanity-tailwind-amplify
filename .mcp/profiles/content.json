@@ -1,0 +1,55 @@
+{
+  "description": "Content Profile - Daily content management (DEFAULT)",
+  "use_case": "Content editing, Sanity schema work, blog post management (80% of sessions)",
+  "is_default": true,
+  "mcpServers": {
+    "sanity": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@sanity/mcp-server@latest"
+      ],
+      "env": {
+        "SANITY_PROJECT_ID": "${SANITY_PROJECT_ID}",
+        "SANITY_DATASET": "${SANITY_DATASET}",
+        "SANITY_API_TOKEN": "${SANITY_API_TOKEN}",
+        "MCP_USER_ROLE": "editor"
+      },
+      "description": "Sanity CMS - Content management and queries for Academia Semillas project",
+      "required": true
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "description": "GitHub - Repository access, issues, PRs (npm version)",
+      "required": true
+    }
+  },
+  "mcpjsonServers": {
+    "io.github.github/github-mcp-server": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "requestInit": {
+        "headers": {
+          "Authorization": "Bearer ${GITHUB_MCP_TOKEN}"
+        }
+      },
+      "description": "GitHub MCP - Official GitHub integration via HTTP API",
+      "required": false,
+      "note": "Alternative to npm github. Enable only one GitHub MCP."
+    }
+  },
+  "metadata": {
+    "profile": "content",
+    "tools_count": 2,
+    "estimated_tokens": 14704,
+    "startup_time_ms": 2100,
+    "daily_cost_usd": 0.94
+  }
+}
