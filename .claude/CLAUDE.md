@@ -14,10 +14,12 @@ Modern stack with **Sanity CMS**, **Next.js (App Router)**, and **Tailwind CSS**
 2. **Configure Environment Variables**:
    Create `.env.local` in `next-app/` based on `.env.local.example`.
 
-3. **Initialize Sanity MCP** (if using):
-   ```bash
-   cd studio && npx sanity@latest mcp configure
-   ```
+3. **Activate Sanity MCP in Claude Code** (for real-time content access):
+   - Open Claude Code
+   - Cmd/Ctrl + Shift + P → "Configure MCP Servers"
+   - Add Sanity server from `.claude/mcp-servers.json`
+   - Restart Claude Code
+   - See: `doc/MCP-SANITY-SETUP.md` for details
 
 4. **Run Development**:
    ```bash
