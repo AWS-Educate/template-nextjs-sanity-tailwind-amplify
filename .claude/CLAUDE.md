@@ -51,14 +51,15 @@ Modern stack with **Sanity CMS**, **Next.js (App Router)**, and **Tailwind CSS**
 - Purpose: Persist context between sessions
 
 **MEMORY LOG DIRECTIVE (CRITICAL)**:
-- 📋 **Al finalizar cada fase, tarea o paso:** Actualizar `.claude/plans/memory-log.md`
+- 📋 **Al finalizar cada fase, tarea o paso:** Actualizar `/doc/PHASE-PROGRESS.md`
 - **Flujo obligatorio:**
   1. Consultar primero `CLAUDE.md` (directivas principales)
-  2. Guardar TODA la información de cada paso en `memory-log.md`
+  2. Guardar TODA la información de cada paso en `PHASE-PROGRESS.md`
 - **Registrar:** Cada documento nuevo, cada tarea finalizada, cada fase completada, cada paso del proceso
 - **Propósito:** Mantener contexto persistente entre sesiones y permitir retomar trabajo exactamente donde se dejó
-- **Ubicación:** `.claude/plans/memory-log.md`
+- **Ubicación:** `/doc/PHASE-PROGRESS.md` (centralizado con toda la documentación)
 - **Plan de migración:** `/doc/MIGRATION-PLAN.md` (referencia principal del proyecto)
+- **Índice:** `/doc/README.md` (guía de la estructura del proyecto)
 
 ### Automated Workflows
 
