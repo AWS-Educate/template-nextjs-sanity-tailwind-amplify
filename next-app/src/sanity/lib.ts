@@ -11,7 +11,7 @@ import type {Post, Page, Event, Category, Schedule, BookstoreItem, SiteSettings}
  */
 async function fetchSanity<T>(query: string, params?: Record<string, unknown>): Promise<T | null> {
   try {
-    const result = await client.fetch<T>(query, params)
+    const result = await client.fetch<T>(query, params ?? {})
     return result
   } catch (error) {
     console.error('Sanity fetch error:', error)
@@ -145,7 +145,7 @@ export async function getLegacyRedirect(
   oldPath: string
 ): Promise<{newPath: string; statusCode: number} | null> {
   const {LEGACY_REDIRECT_QUERY} = await import('./queries')
-  const redirect = await fetchSanity(LEGACY_REDIRECT_QUERY, {oldPath})
+  const redirect = await fetchSanity<{newPath: string; statusCode: number}>(LEGACY_REDIRECT_QUERY, {oldPath})
   return redirect
     ? {newPath: redirect.newPath, statusCode: redirect.statusCode}
     : null
