@@ -11,8 +11,8 @@
 |------|--------|-------|
 | Fase 0: Setup Inicial | ✅ COMPLETADA | 2026-02-16 |
 | Fase 1: Extracción de Contenido | ✅ COMPLETADA | 2026-02-16 |
-| Fase 2: Sistema de Diseño | 🔄 LISTA PARA INICIAR | - |
-| Fase 3: Schemas de Sanity | PENDIENTE | - |
+| Fase 2: Sistema de Diseño | ✅ COMPLETADA | 2026-02-16 |
+| Fase 3: Schemas de Sanity | ✅ COMPLETADA | 2026-02-16 |
 | Fase 4: Cliente Sanity + Queries | PENDIENTE | - |
 | Fase 5: Páginas Next.js | PENDIENTE | - |
 | Fase 6: Migración Contenido | PENDIENTE | - |
@@ -212,34 +212,103 @@
 
 ---
 
-## Fase 3: Schemas de Sanity - PRÓXIMA (2026-02-16)
+## Fase 3: Schemas de Sanity - ✅ COMPLETADA (2026-02-16)
 
-### Objetivo
-Crear los 8 document types y 14 object types en Sanity CMS
+### Tareas Completadas
+- [x] Crear 8 document types
+- [x] Crear 14 object types
+- [x] Registrar todos los tipos en `studio/schemas/index.ts`
+- [x] Verificar compilación TypeScript
+- [x] Commit d09cd8e
 
-### Document Types (8) a Crear
-1. `post.ts` - MODIFICAR existente (agregar category ref, tags, seo)
-2. `category.ts` - Categorías del blog
-3. `page.ts` - Páginas con sections modulares (page builder)
-4. `event.ts` - Eventos con fecha, zoom link, registro
-5. `schedule.ts` - Programación semanal meditación
-6. `siteSettings.ts` - Logo, nav, contacto, redes sociales (singleton)
-7. `bookstoreItem.ts` - Productos librería
-8. `legacyRedirect.ts` - Mapeo URLs old→new
+### Document Types (8) Creados
+1. ✅ `post.ts` - Blog posts con category, tags, seo
+2. ✅ `category.ts` - Categorías del blog
+3. ✅ `page.ts` - Páginas modulares (10 section types)
+4. ✅ `event.ts` - Eventos con fechas, zoom, registro, capacidad
+5. ✅ `schedule.ts` - Programación semanal (lunes-domingo)
+6. ✅ `siteSettings.ts` - Global settings singleton
+7. ✅ `bookstoreItem.ts` - Librería con ISBN, precios, stock
+8. ✅ `legacyRedirect.ts` - URL redirects (301/302/307/308)
 
-### Object Types (14) a Crear
+### Object Types (14) Creados
 Ubicación: `studio/schemas/objects/`
-- heroSection, textSection, imageTextSection, ctaSection
-- scheduleSection, blogFeedSection, contactFormSection, donationSection
-- bannerSection, quoteSection, gallerySection, eventRegistrationSection
-- navItem, seo
+- ✅ seo.ts - Meta tags, OG image
+- ✅ navItem.ts - Navigation with submenu
+- ✅ heroSection.ts - Hero banners
+- ✅ textSection.ts - Rich text blocks
+- ✅ ctaSection.ts - Call-to-action buttons
+- ✅ imageTextSection.ts - Image + text layout
+- ✅ scheduleSection.ts - Event scheduling arrays
+- ✅ blogFeedSection.ts - Dynamic blog feed
+- ✅ contactFormSection.ts - Form builder
+- ✅ donationSection.ts - Donation CTA
+- ✅ bannerSection.ts - Announcement banners
+- ✅ quoteSection.ts - Testimonials/quotes
+- ✅ gallerySection.ts - Image galleries
+- ✅ eventRegistrationSection.ts - Event registration forms
 
-### Información Clave
-- Registrar todo en `studio/schemas/index.ts`
-- Considerar portable text para contenido rico
-- Referencias entre documentos (post → category, page → sections)
-- Asset pipeline para imágenes Sanity CDN
+### Cambios en Archivos Existentes
+
+**post.ts - Campos Agregados:**
+```typescript
+- category: reference → category
+- tags: array → string[]
+- seo: seo object
+```
+
+**index.ts - Actualizado:**
+- Importa 8 document types
+- Importa 14 object types
+- Organiza imports por categoría
+
+### Configuración Técnica
+
+**Características Implementadas:**
+- Type-safe schemas con `defineField` y `defineType`
+- Validación en campos críticos
+- References entre documentos (post → category, page → sections)
+- Asset support (imágenes con hotspot)
+- Portable text (blockContent) para rich text
+- Singleton support (siteSettings)
+- Preview configurations para Studio
+
+**Columnas de Datos Soportadas:**
+- Text, number, datetime, slug, url, email
+- Arrays y objects anidados
+- References y backreferences
+- Images con hotspot support
+- Rich content con blockContent
+
+### Archivos Generados
+- `/studio/schemas/post.ts` (MODIFICADO - 68 líneas)
+- `/studio/schemas/category.ts` (NEW - 28 líneas)
+- `/studio/schemas/page.ts` (NEW - 48 líneas)
+- `/studio/schemas/event.ts` (NEW - 79 líneas)
+- `/studio/schemas/schedule.ts` (NEW - 73 líneas)
+- `/studio/schemas/siteSettings.ts` (NEW - 61 líneas)
+- `/studio/schemas/bookstoreItem.ts` (NEW - 74 líneas)
+- `/studio/schemas/legacyRedirect.ts` (NEW - 39 líneas)
+- `/studio/schemas/index.ts` (MODIFICADO - 54 líneas)
+
+**Total: 22 document/object types registrados**
 
 ---
 
-*Última actualización: 2026-02-16 18:50*
+## Fase 4: Cliente Sanity + Queries - PRÓXIMA
+
+### Objetivo
+Crear el cliente Sanity y GROQ queries para frontend
+
+### Tareas
+1. Crear `/next-app/lib/sanity.client.ts`
+2. Crear `/next-app/lib/sanity.queries.ts`
+3. Queries GROQ optimizadas para cada página/sección
+4. Cache strategy configuration
+
+### Dependencias
+- Fase 3: Schemas ✅ COMPLETADA
+
+---
+
+*Última actualización: 2026-02-16 19:15 - Fase 3 Completada*
