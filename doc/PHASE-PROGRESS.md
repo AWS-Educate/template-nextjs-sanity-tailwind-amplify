@@ -167,38 +167,79 @@
 
 ---
 
-## Fase 2: Sistema de Diseño - EN PROGRESO (2026-02-16)
+## Fase 2: Sistema de Diseño - ✅ COMPLETADA (2026-02-16)
 
-### Objetivos
+### Tareas Completadas
 - [x] Consultar paleta de colores y fuentes del sitio Wix
-- [ ] Configurar variables CSS (colores, tipografía, espaciado)
-- [ ] Importar fuentes Google (Source Serif 4, Source Sans 3, Cormorant Garamond)
-- [ ] Aplicar paleta a Tailwind config
-- [ ] Validar que los colores se vean correctamente
+- [x] Importar fuentes Google (Source Serif 4, Source Sans 3, Cormorant Garamond)
+- [x] Configurar variables CSS (colores, tipografía, espaciado)
+- [x] Crear paleta completa (50-900 shades para cada color primario)
+- [x] Implementar dark mode support
+- [x] Establecer jerarquía tipográfica
+- [x] Commit d5fa996
 
-### Configuración a Realizar
+### Configuración Implementada
 
-**Colores (CSS Variables):**
-- `--primary-500`: #173981 (Azul profundo)
-- `--secondary-500`: #DE6B2F (Naranja cálido)
-- `--accent-sage-500`: #696C0E (Oliva/Salvia)
-- `--navy-800`: #1E3650 (Navy oscuro)
-- `--neutral-100`: #F5F3EE (Crema clara)
-- `--neutral-50`: #FDFCF9 (Blanco cálido)
+**Colores Primarios:**
+- Primary: #173981 (Azul profundo - Meditación/Espiritualidad)
+- Secondary: #DE6B2F (Naranja cálido - Energía/Compasión)
+- Accent Sage: #696C0E (Oliva/Salvia - Naturaleza/Balance)
+- Navy: #1E3650 (Navy oscuro - Footer/Texto oscuro)
 
-**Fuentes Google:**
-- Headings: Source Serif 4 (reemplaza Archer Pro)
-- Body: Source Sans 3 (reemplaza Futura LT)
-- Decorativa: Cormorant Garamond (reemplaza Thirsty Script)
+**Neutrales (Paleta Cálida):**
+- Neutral-50: #FDFCF9 (Blanco cálido)
+- Neutral-100: #F5F3EE (Crema clara)
+- Neutral-900: #252320 (Marrón oscuro)
 
-### Archivos a Modificar
-- `/next-app/src/app/globals.css` - Variables CSS + fuentes
-- `tailwind.config.ts` - Mapear variables a Tailwind (si aplica)
+**Fuentes Google Implementadas:**
+- Headings: Source Serif 4 (elegante, contemplativa)
+- Body: Source Sans 3 (clara, legible)
+- Decorative: Cormorant Garamond (espiritual, refinada)
+
+**Archivos Modificados:**
+- `/next-app/src/app/globals.css` (202 líneas)
+  - 90+ variables CSS para colores
+  - 3 gradientes temáticos
+  - Sombras meditativas
+  - Tipografía jerárquica completa
+  - Soporte dark mode
 
 ### Sesiones de Trabajo
 - **2026-02-16 sesión 1:** Extracción Fase 1 + Consolidación documentación + Actualización CLAUDE.md
-- **2026-02-16 sesión 2:** Iniciando Fase 2 (Sistema de Diseño)
+- **2026-02-16 sesión 2:** Fase 2 completa (Sistema de Diseño + CSS variables + Tipografía)
 
 ---
 
-*Última actualización: 2026-02-16 18:45*
+---
+
+## Fase 3: Schemas de Sanity - PRÓXIMA (2026-02-16)
+
+### Objetivo
+Crear los 8 document types y 14 object types en Sanity CMS
+
+### Document Types (8) a Crear
+1. `post.ts` - MODIFICAR existente (agregar category ref, tags, seo)
+2. `category.ts` - Categorías del blog
+3. `page.ts` - Páginas con sections modulares (page builder)
+4. `event.ts` - Eventos con fecha, zoom link, registro
+5. `schedule.ts` - Programación semanal meditación
+6. `siteSettings.ts` - Logo, nav, contacto, redes sociales (singleton)
+7. `bookstoreItem.ts` - Productos librería
+8. `legacyRedirect.ts` - Mapeo URLs old→new
+
+### Object Types (14) a Crear
+Ubicación: `studio/schemas/objects/`
+- heroSection, textSection, imageTextSection, ctaSection
+- scheduleSection, blogFeedSection, contactFormSection, donationSection
+- bannerSection, quoteSection, gallerySection, eventRegistrationSection
+- navItem, seo
+
+### Información Clave
+- Registrar todo en `studio/schemas/index.ts`
+- Considerar portable text para contenido rico
+- Referencias entre documentos (post → category, page → sections)
+- Asset pipeline para imágenes Sanity CDN
+
+---
+
+*Última actualización: 2026-02-16 18:50*
