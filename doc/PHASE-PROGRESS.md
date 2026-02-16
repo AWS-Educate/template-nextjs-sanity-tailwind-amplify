@@ -13,7 +13,7 @@
 | Fase 1: Extracción de Contenido | ✅ COMPLETADA | 2026-02-16 |
 | Fase 2: Sistema de Diseño | ✅ COMPLETADA | 2026-02-16 |
 | Fase 3: Schemas de Sanity | ✅ COMPLETADA | 2026-02-16 |
-| Fase 4: Cliente Sanity + Queries | PENDIENTE | - |
+| Fase 4: Cliente Sanity + Queries | ✅ COMPLETADA | 2026-02-16 |
 | Fase 5: Páginas Next.js | PENDIENTE | - |
 | Fase 6: Migración Contenido | PENDIENTE | - |
 | Fase 7: Redirects 301 | PENDIENTE | - |
