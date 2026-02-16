@@ -1,0 +1,52 @@
+{
+  "url": "/programacion",
+  "title": "Programación de Oficios, Eventos Permanentes y Especiales Yogananda SRF en Bogotá",
+  "metaDescription": "Descubre la programación completa de los oficios religiosos, eventos permanentes y eventos especiales de nuestra comunidad del centro de meditacion de Self-Realization Fellowship en bogotá. Mantente informado sobre todas nuestras actividades y participa en nuestros eventos destacados.",
+  "sections": [
+    {
+      "type": "hero",
+      "image": "https://static.wixstatic.com/media/759d0b_ca1b1ac9273e4bb6bd5d31295b4423f7~mv2.png/v1/fill/w_3000,h_1666,al_c,q_95,enc_avif,quality_auto/759d0b_ca1b1ac9273e4bb6bd5d31295b4423f7~mv2.png",
+      "imageAlt": "Banner Programación"
+    },
+    {
+      "type": "heading",
+      "text": "Programación"
+    },
+    {
+      "type": "blogFeed",
+      "note": "Esta página muestra un feed de blog posts recientes"
+    }
+  ],
+  "recentPosts": [
+    {
+      "title": "Narada, Krishna y el poder de Maya",
+      "slug": "narada-krishna-y-el-poder-de-maya",
+      "date": "11 dic 2025"
+    },
+    {
+      "title": "Lectura en Vivo, de Autobiografía de un Yogui, Hoy 7:00 pm",
+      "slug": "celebremos-el-75-aniversario-de-autobiografía-de-un-yogui-con-una-lectura-en-vivo",
+      "date": "28 nov 2025"
+    },
+    {
+      "title": "Guía para Entender un Retiro de Self Realization Fellowship: Meditación, Silencio y Kriya Yoga",
+      "slug": "prepárate-para-un-retiro-espiritual-en-el-monasterio-benedictino-de-el-rosal-cundinamarca",
+      "date": "16 sept 2025"
+    },
+    {
+      "title": "En el Día Internacional del Yoga Encuentra Paz y Conexión",
+      "slug": "en-el-día-internacional-del-yoga-encuentra-paz-y-conexión-un-regalo-de-silencio-y-devoción-te-esper",
+      "date": "16 may 2025"
+    },
+    {
+      "title": "Cómo Alegra Potencia las Capacidades de Nuestra Asociación",
+      "slug": "cómo-alegra-potencia-las-capacidades-de-nuestra-asociación",
+      "date": "16 may 2025"
+    },
+    {
+      "title": "Asamblea General Ordinaria Domingo 23 de Febrero 8:00 am",
+      "slug": "asamblea-ordinaria-domingo-23-de-febrero-8-00-am",
+      "date": "3 feb 2025"
+    }
+  ]
+}

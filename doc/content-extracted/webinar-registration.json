@@ -1,0 +1,68 @@
+{
+  "url": "/webinar-registration",
+  "title": "Liga de Voluntarios",
+  "metaDescription": "",
+  "note": "Esta parece ser una página de plantilla de webinar que fue adaptada para 'Liga de Voluntarios' pero mantiene contenido de ejemplo",
+  "sections": [
+    {
+      "type": "hero",
+      "title": "Liga de Voluntarios",
+      "subtitle": "SRF Bogotá",
+      "backgroundImage": "https://static.wixstatic.com/media/c6abb7_463861e399c34d3d83b16c65a9a1b760~mv2.jpg"
+    },
+    {
+      "type": "speaker",
+      "name": "Camila Melo",
+      "title": "Fundadora y CEO de Melo SA.",
+      "description": "Presenta a los relatores del webinario destacando su trayectoria profesional."
+    },
+    {
+      "type": "topics",
+      "heading": "En este webinario aprenderemos",
+      "items": [
+        {
+          "title": "Secretos del marketing",
+          "description": "Agrega tu propio contenido a este párrafo."
+        },
+        {
+          "title": "Manejo de redes sociales",
+          "description": "Agrega tu propio contenido a este párrafo."
+        },
+        {
+          "title": "Estrategias de fidelización",
+          "description": "Agrega tu propio contenido a este párrafo."
+        }
+      ]
+    },
+    {
+      "type": "registration-form",
+      "heading": "Deseo unirme al webinario y registrarme",
+      "fields": [
+        {
+          "name": "nombre",
+          "type": "text",
+          "label": "Nombre",
+          "required": false
+        },
+        {
+          "name": "apellido",
+          "type": "text",
+          "label": "Apellido",
+          "required": false
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "label": "Email",
+          "required": true
+        },
+        {
+          "name": "message",
+          "type": "textarea",
+          "label": "Mensaje",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

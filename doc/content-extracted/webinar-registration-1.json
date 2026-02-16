@@ -1,0 +1,59 @@
+{
+  "url": "/webinar-registration-1",
+  "title": "Campaña 1 | Yogananda Bogotá",
+  "metaDescription": "",
+  "note": "Esta página parece ser una landing page de webinar sobre meditación, específicamente sobre el ojo espiritual",
+  "sections": [
+    {
+      "type": "hero",
+      "title": "Enfocar la atención en el ojo espiritual",
+      "backgroundImage": "https://static.wixstatic.com/media/759d0b_941315c5194a41938db4c902772b9a68~mv2.png",
+      "imageAlt": "INTRODUCCION A LA MEDITACION"
+    },
+    {
+      "type": "text",
+      "heading": "Enfocar la atención en el ojo espiritual",
+      "paragraphs": [
+        "Con los párpados semicerrados (o completamente cerrados, si le es más cómodo), dirija la mirada hacia arriba enfocándola, junto con la atención, hacia un punto situado en el entrecejo, como si mirase hacia fuera a través de dicho punto. (La persona que se concentra con profundidad tiende a fruncir el entrecejo). No hay que cruzar ni forzar los ojos en forma alguna; al relajarse y concentrarse con serenidad, la mirada se dirige naturalmente hacia arriba.",
+        "Lo importante es fijar la atención por completo en el entrecejo. Éste es el centro de la Conciencia Crística, el asiento del ojo único al cual se refirió Cristo: «El ojo es la lámpara del cuerpo. Si tu ojo es único, todo tu cuerpo estará iluminado» (San Mateo 6:22).",
+        "Cuando se logra el propósito de la meditación, el devoto descubre que su mente se concentra automáticamente en el ojo espiritual, experimentando —de acuerdo con su capacidad espiritual interior— un estado de unión extática divina con el Espíritu."
+      ],
+      "bibleReference": "San Mateo 6:22"
+    },
+    {
+      "type": "topics",
+      "heading": "En este webinario aprenderemos",
+      "note": "Los topics específicos no están visibles en el contenido extraído"
+    },
+    {
+      "type": "registration-form",
+      "heading": "Deseo unirme al webinario y registrarme",
+      "fields": [
+        {
+          "name": "nombre",
+          "type": "text",
+          "label": "Nombre",
+          "required": false
+        },
+        {
+          "name": "apellido",
+          "type": "text",
+          "label": "Apellido",
+          "required": false
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "label": "Email",
+          "required": true
+        },
+        {
+          "name": "message",
+          "type": "textarea",
+          "label": "Mensaje",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
