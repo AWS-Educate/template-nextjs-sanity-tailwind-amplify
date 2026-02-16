@@ -295,20 +295,130 @@ Ubicación: `studio/schemas/objects/`
 
 ---
 
-## Fase 4: Cliente Sanity + Queries - PRÓXIMA
+## Fase 4: Cliente Sanity + Queries - ✅ COMPLETADA (2026-02-16)
 
-### Objetivo
-Crear el cliente Sanity y GROQ queries para frontend
+### Tareas Completadas
+- [x] Cliente Sanity (public + server variants)
+- [x] TypeScript types (8 docs + 14 objects + 264 líneas)
+- [x] GROQ queries (20 total, optimizadas)
+- [x] Helper functions (20+ funciones)
+- [x] Middleware para redirects 301
+- [x] Image utilities con transformaciones
+- [x] Commit 75ae8be
 
-### Tareas
-1. Crear `/next-app/lib/sanity.client.ts`
-2. Crear `/next-app/lib/sanity.queries.ts`
-3. Queries GROQ optimizadas para cada página/sección
-4. Cache strategy configuration
+### Archivos Creados
 
-### Dependencias
-- Fase 3: Schemas ✅ COMPLETADA
+**`next-app/src/sanity/client.ts`** (32 líneas)
+- `client`: Lectura pública (CDN, perspectiva 'published')
+- `serverClient`: Con token (sin CDN, perspectiva 'previewDrafts')
+- Validación de env vars automática
+
+**`next-app/src/sanity/types.ts`** (264 líneas)
+- 8 tipos documento (Post, Category, Page, Event, Schedule, SiteSettings, BookstoreItem, LegacyRedirect)
+- 14 tipos objeto (secciones + meta tipos)
+- Union types: `Section`, respuestas API
+- Completo TypeScript support
+
+**`next-app/src/sanity/queries.ts`** (344 líneas)
+- 20 GROQ queries optimizadas
+- Site Settings: 1
+- Blog: 6 (all, by-slug, by-category, related, search)
+- Categories: 2 (all, by-slug)
+- Pages: 2 (by-slug, home)
+- Events: 2 (upcoming, by-slug)
+- Schedule: 2 (current, by-week)
+- Bookstore: 4 (all, featured, by-slug, by-category)
+- Redirects: 2 (single, all)
+- Static Gen: 4 utility queries
+
+**`next-app/src/sanity/lib.ts`** (232 líneas)
+- 20+ helper functions
+- `fetchSanity<T>()`: Base function con error handling
+- Funciones tipadas para cada recurso
+- `getSanityImageUrl()`: Image transformations
+- Todas retornan null en error (seguro)
+
+**`next-app/src/middleware.ts`** (24 líneas)
+- Middleware para redirects legacy
+- Consulta tabla legacyRedirect
+- Status code personalizado (301/302/307/308)
+- Matcher: Excluye assets estáticos
+
+**`next-app/src/sanity/index.ts`** (8 líneas)
+- Re-export central
+- Imports: client, lib, types, queries
+
+### Características Implementadas
+
+**Optimización de Queries**
+- ✅ Projection: Solo campos necesarios
+- ✅ Asset resolution: asset->url
+- ✅ Ordering: Optimizado por campos
+- ✅ Filtering: Conditions eficientes
+- ✅ Limit: Para paginación
+
+**Error Handling**
+- ✅ Try-catch en fetchSanity
+- ✅ Null returns en error
+- ✅ Console logging
+- ✅ Env var validation
+
+**Type Safety**
+- ✅ TypeScript strict mode
+- ✅ Todos los tipos documentados
+- ✅ Generic `fetchSanity<T>`
+- ✅ Union types para sections
+
+**Performance**
+- ✅ CDN para client público
+- ✅ Image URL builder
+- ✅ Listo para ISR caching
+- ✅ SSG-ready queries
+
+### Resumen Técnico
+
+**Total Líneas**: 905 líneas
+**Funciones Helper**: 20+
+**Queries GROQ**: 20
+**Tipos TypeScript**: 30+
+**Documentación**: PHASE-4-SANITY-CLIENT.md
+
+### Ejemplo de Uso
+
+```typescript
+// En una página Next.js
+import {getPostBySlug, getUpcomingEvents} from '@/sanity'
+
+export default async function BlogPost({params}) {
+  const post = await getPostBySlug(params.slug)
+  return <article>{post.title}</article>
+}
+
+// En middleware
+import {getLegacyRedirect} from '@/sanity'
+const redirect = await getLegacyRedirect('/old-url')
+// → {newPath: '/new-url', statusCode: 301}
+```
 
 ---
 
-*Última actualización: 2026-02-16 19:15 - Fase 3 Completada*
+## Fase 5: Páginas y Componentes Next.js - PRÓXIMA
+
+### Objetivo
+Crear páginas y componentes que usen queries GROQ
+
+### Tareas Principales
+1. Crear layout.tsx global (Header, Footer, Navigation)
+2. Crear page.tsx (homepage)
+3. Crear blog/[slug]/page.tsx
+4. Crear eventos/page.tsx
+5. Crear libreria/page.tsx
+6. Crear SectionRenderer (renderiza secciones dinámicamente)
+7. Crear componentes compartidos
+
+### Dependencias
+- Fase 4: Cliente Sanity ✅ COMPLETADA
+
+---
+
+*Última actualización: 2026-02-16 19:45 - Fase 4 Completada*
