@@ -165,13 +165,40 @@
 
 ---
 
-## Próximos Pasos
+---
 
-**Fase 2: Sistema de Diseño** - Implementar paleta de colores y fuentes
-- Archivo objetivo: `next-app/src/app/globals.css`
-- Paleta: Azul #173981, Naranja #DE6B2F, Oliva #696C0E, Crema #F0F0E6
-- Fuentes: Source Serif 4, Source Sans 3, Cormorant Garamond
+## Fase 2: Sistema de Diseño - EN PROGRESO (2026-02-16)
+
+### Objetivos
+- [x] Consultar paleta de colores y fuentes del sitio Wix
+- [ ] Configurar variables CSS (colores, tipografía, espaciado)
+- [ ] Importar fuentes Google (Source Serif 4, Source Sans 3, Cormorant Garamond)
+- [ ] Aplicar paleta a Tailwind config
+- [ ] Validar que los colores se vean correctamente
+
+### Configuración a Realizar
+
+**Colores (CSS Variables):**
+- `--primary-500`: #173981 (Azul profundo)
+- `--secondary-500`: #DE6B2F (Naranja cálido)
+- `--accent-sage-500`: #696C0E (Oliva/Salvia)
+- `--navy-800`: #1E3650 (Navy oscuro)
+- `--neutral-100`: #F5F3EE (Crema clara)
+- `--neutral-50`: #FDFCF9 (Blanco cálido)
+
+**Fuentes Google:**
+- Headings: Source Serif 4 (reemplaza Archer Pro)
+- Body: Source Sans 3 (reemplaza Futura LT)
+- Decorativa: Cormorant Garamond (reemplaza Thirsty Script)
+
+### Archivos a Modificar
+- `/next-app/src/app/globals.css` - Variables CSS + fuentes
+- `tailwind.config.ts` - Mapear variables a Tailwind (si aplica)
+
+### Sesiones de Trabajo
+- **2026-02-16 sesión 1:** Extracción Fase 1 + Consolidación documentación + Actualización CLAUDE.md
+- **2026-02-16 sesión 2:** Iniciando Fase 2 (Sistema de Diseño)
 
 ---
 
-*Última actualización: 2026-02-16 18:30*
+*Última actualización: 2026-02-16 18:45*
