@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'post',
-  title: 'Blog Post',
+  name: 'page',
+  title: 'Page',
   type: 'document',
   fields: [
     defineField({
@@ -22,38 +22,21 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
-      rows: 3,
-    }),
-    defineField({
-      name: 'category',
-      title: 'Category',
-      type: 'reference',
-      to: [{type: 'category'}],
-    }),
-    defineField({
-      name: 'tags',
-      title: 'Tags',
+      name: 'sections',
+      title: 'Page Sections',
       type: 'array',
-      of: [{type: 'string'}],
-      options: {
-        layout: 'tags',
-      },
-    }),
-    defineField({
-      name: 'mainImage',
-      title: 'Main Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
+      of: [
+        {type: 'heroSection'},
+        {type: 'textSection'},
+        {type: 'ctaSection'},
+        {type: 'imageTextSection'},
+        {type: 'quoteSection'},
+        {type: 'gallerySection'},
+        {type: 'bannerSection'},
+        {type: 'blogFeedSection'},
+        {type: 'contactFormSection'},
+        {type: 'donationSection'},
+      ],
     }),
     defineField({
       name: 'publishedAt',
@@ -70,7 +53,6 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage',
       subtitle: 'publishedAt',
     },
   },
