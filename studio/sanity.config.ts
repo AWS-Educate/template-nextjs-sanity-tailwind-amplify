@@ -5,10 +5,10 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: '{{PROJECT_NAME}}',
+  title: 'SRF Yogananda Bogotá',
 
-  projectId: '{{SANITY_PROJECT_ID}}',
-  dataset: '{{SANITY_DATASET}}',
+  projectId: 'jovlwcbx',
+  dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
 
