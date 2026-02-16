@@ -402,6 +402,62 @@ const redirect = await getLegacyRedirect('/old-url')
 
 ---
 
+## Fase 4.5: Configuración Sanity + MCP - ✅ COMPLETADA (2026-02-16)
+
+### Tareas Completadas
+- [x] Sanity Project ID configurado (jovlwcbx)
+- [x] Sanity Dataset configurado (production)
+- [x] sanity.config.ts actualizado
+- [x] sanity.cli.ts actualizado
+- [x] .env.local creado (local, no commitear)
+- [x] .env.local.example actualizado
+- [x] MCP server configurado (.claude/mcp-servers.json)
+- [x] Documentación MCP creada
+- [x] Commits 8e5e9ae, 98bbf9b, 96118aa
+
+### Archivos Creados
+
+**Configuration**:
+- `studio/sanity.config.ts` - MODIFICADO con jovlwcbx
+- `studio/sanity.cli.ts` - MODIFICADO con jovlwcbx
+- `next-app/.env.local` - CREADO (local, no en git)
+- `next-app/.env.local.example` - ACTUALIZADO
+
+**MCP Setup**:
+- `.claude/mcp-servers.json` - Configuración MCP
+- `doc/SANITY-SETUP-GUIDE.md` - Guía de setup
+- `doc/MCP-SANITY-SETUP.md` - Guía de MCP
+
+### Credenciales Configuradas
+```
+PROJECT_ID: jovlwcbx
+DATASET:    production
+```
+
+### MCP Sanity
+```json
+{
+  "mcpServers": {
+    "sanity": {
+      "command": "npx",
+      "args": ["@sanity/mcp@latest", "serve"],
+      "env": {
+        "SANITY_PROJECT_ID": "jovlwcbx",
+        "SANITY_DATASET": "production"
+      }
+    }
+  }
+}
+```
+
+### Cómo Activar MCP en Claude Code
+1. Cmd/Ctrl + Shift + P
+2. "Configure MCP Servers"
+3. Agregar servidor Sanity
+4. Reiniciar Claude Code
+
+---
+
 ## Fase 5: Páginas y Componentes Next.js - PRÓXIMA
 
 ### Objetivo
@@ -418,7 +474,27 @@ Crear páginas y componentes que usen queries GROQ
 
 ### Dependencias
 - Fase 4: Cliente Sanity ✅ COMPLETADA
+- Fase 4.5: Sanity Config + MCP ✅ COMPLETADA
 
 ---
 
-*Última actualización: 2026-02-16 19:45 - Fase 4 Completada*
+## Estado General Actualizado
+
+| Fase | Estado | Fecha |
+|------|--------|-------|
+| Fase 0: Setup Inicial | ✅ COMPLETADA | 2026-02-16 |
+| Fase 1: Extracción de Contenido | ✅ COMPLETADA | 2026-02-16 |
+| Fase 2: Sistema de Diseño | ✅ COMPLETADA | 2026-02-16 |
+| Fase 3: Schemas de Sanity | ✅ COMPLETADA | 2026-02-16 |
+| Fase 4: Cliente Sanity + Queries | ✅ COMPLETADA | 2026-02-16 |
+| Fase 4.5: Configuración + MCP | ✅ COMPLETADA | 2026-02-16 |
+| Fase 5: Páginas Next.js | 🔲 PENDIENTE | - |
+| Fase 6: Migración Contenido | PENDIENTE | - |
+| Fase 7: Redirects 301 | PENDIENTE | - |
+| Fase 8: Testing y QA | PENDIENTE | - |
+| Fase 9: Deploy Go-Live | PENDIENTE | - |
+| Fase 10: Post-Migración | PENDIENTE | - |
+
+---
+
+*Última actualización: 2026-02-16 20:15 - Fase 4.5 Completada (Sanity + MCP)*
