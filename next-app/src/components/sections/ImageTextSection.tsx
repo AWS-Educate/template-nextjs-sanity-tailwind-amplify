@@ -1,5 +1,6 @@
 import Container from '@/components/ui/Container'
 import SanityImage from '@/components/ui/SanityImage'
+import PortableTextRenderer from '@/components/ui/PortableTextRenderer'
 import type {ImageTextSection as ImageTextSectionType} from '@/sanity/types'
 
 export default function ImageTextSection({data}: {data: ImageTextSectionType}) {
@@ -14,7 +15,8 @@ export default function ImageTextSection({data}: {data: ImageTextSectionType}) {
             </div>
           </div>
           <div className="w-full md:w-1/2">
-            <p className="text-lg leading-relaxed text-neutral-700">{data.text}</p>
+            {data.heading && <h3 className="text-2xl font-semibold mb-4">{data.heading}</h3>}
+            {data.body && <PortableTextRenderer value={data.body} />}
           </div>
         </div>
       </Container>

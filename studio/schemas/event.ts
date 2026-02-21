@@ -18,6 +18,7 @@ export default defineType({
       options: {
         source: 'title',
         maxLength: 96,
+        isUnique: (value, context) => context.defaultIsUnique(value, context),
       },
       validation: (rule) => rule.required(),
     }),
@@ -36,6 +37,14 @@ export default defineType({
       name: 'endDate',
       title: 'End Date',
       type: 'datetime',
+      validation: (rule) =>
+        rule.custom((endDate, context) => {
+          const startDate = (context.document as {startDate?: string})?.startDate
+          if (endDate && startDate && endDate < startDate) {
+            return 'End date must be after start date'
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'location',
@@ -66,6 +75,7 @@ export default defineType({
       title: 'Capacity',
       type: 'number',
       description: 'Maximum attendees (leave empty for unlimited)',
+      validation: (rule) => rule.positive().integer(),
     }),
     defineField({
       name: 'seo',

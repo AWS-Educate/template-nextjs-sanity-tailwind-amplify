@@ -12,7 +12,7 @@ export default function BannerSection({data}: {data: BannerSectionType}) {
   return (
     <section className={`py-4 ${bg}`}>
       <Container className="text-center">
-        <p className="text-sm font-medium m-0">{data.text}</p>
+        <p className="text-sm font-medium m-0">{data.message}</p>
       </Container>
     </section>
   )

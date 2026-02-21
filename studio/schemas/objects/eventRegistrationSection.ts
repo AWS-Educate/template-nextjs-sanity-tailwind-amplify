@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'eventRegistrationSection',
@@ -27,44 +27,55 @@ export default defineType({
       title: 'Registration Form Fields',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           type: 'object',
           fields: [
-            {
+            defineField({
               name: 'name',
-              title: 'Field Name',
+              title: 'Field Name (internal)',
               type: 'string',
               validation: (rule) => rule.required(),
-            },
-            {
+            }),
+            defineField({
+              name: 'label',
+              title: 'Field Label',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
               name: 'type',
               title: 'Field Type',
               type: 'string',
               options: {list: ['text', 'email', 'phone', 'textarea', 'select', 'checkbox', 'date']},
               validation: (rule) => rule.required(),
-            },
-            {
+            }),
+            defineField({
+              name: 'placeholder',
+              title: 'Placeholder Text',
+              type: 'string',
+            }),
+            defineField({
               name: 'required',
               title: 'Required Field',
               type: 'boolean',
               initialValue: false,
-            },
+            }),
           ],
           preview: {
             select: {
-              name: 'name',
+              label: 'label',
               type: 'type',
               required: 'required',
             },
             prepare(selection) {
-              const {name, type, required} = selection
+              const {label, type, required} = selection
               return {
-                title: name || 'Form Field',
+                title: label || 'Form Field',
                 subtitle: `${type}${required ? ' (required)' : ''}`,
               }
             },
           },
-        },
+        }),
       ],
     }),
   ],

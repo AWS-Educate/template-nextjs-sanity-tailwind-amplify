@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'navItem',
@@ -22,13 +22,29 @@ export default defineType({
       title: 'Submenu Items',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           type: 'object',
           fields: [
-            {name: 'label', type: 'string', title: 'Label'},
-            {name: 'href', type: 'string', title: 'URL'},
+            defineField({
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'href',
+              title: 'URL',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
           ],
-        },
+          preview: {
+            select: {
+              title: 'label',
+              subtitle: 'href',
+            },
+          },
+        }),
       ],
       description: 'Optional dropdown menu items',
     }),

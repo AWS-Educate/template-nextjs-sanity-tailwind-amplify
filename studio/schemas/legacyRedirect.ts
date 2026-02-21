@@ -10,14 +10,20 @@ export default defineType({
       title: 'Old URL Path',
       type: 'string',
       description: 'Path from old Wix site (e.g., /meditation-guide)',
-      validation: (rule) => rule.required(),
+      validation: (rule) =>
+        rule
+          .required()
+          .regex(/^\//, {name: 'starts with /', invert: false}),
     }),
     defineField({
       name: 'newPath',
       title: 'New URL Path',
       type: 'string',
       description: 'Path in new Next.js site (e.g., /teachings/meditation-guide)',
-      validation: (rule) => rule.required(),
+      validation: (rule) =>
+        rule
+          .required()
+          .regex(/^\//, {name: 'starts with /', invert: false}),
     }),
     defineField({
       name: 'statusCode',

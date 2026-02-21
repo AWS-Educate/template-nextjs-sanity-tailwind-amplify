@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'ctaSection',
@@ -22,14 +22,35 @@ export default defineType({
       title: 'Buttons',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           type: 'object',
           fields: [
-            {name: 'text', type: 'string', title: 'Button Text'},
-            {name: 'href', type: 'string', title: 'URL'},
-            {name: 'variant', type: 'string', title: 'Variant', options: {list: ['primary', 'secondary', 'outline']}},
+            defineField({
+              name: 'text',
+              title: 'Button Text',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'href',
+              title: 'URL',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'variant',
+              title: 'Variant',
+              type: 'string',
+              options: {list: ['primary', 'secondary', 'outline']},
+            }),
           ],
-        },
+          preview: {
+            select: {
+              title: 'text',
+              subtitle: 'href',
+            },
+          },
+        }),
       ],
       validation: (rule) => rule.required().min(1),
     }),

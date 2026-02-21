@@ -14,8 +14,8 @@
 | Fase 2: Sistema de Diseño | ✅ COMPLETADA | 2026-02-16 |
 | Fase 3: Schemas de Sanity | ✅ COMPLETADA | 2026-02-16 |
 | Fase 4: Cliente Sanity + Queries | ✅ COMPLETADA | 2026-02-16 |
-| Fase 5: Páginas Next.js | PENDIENTE | - |
-| Fase 6: Migración Contenido | PENDIENTE | - |
+| Fase 5: Páginas Next.js | ✅ COMPLETADA | 2026-02-16 |
+| Fase 6: Migración Contenido | 🔲 PRÓXIMA | - |
 | Fase 7: Redirects 301 | PENDIENTE | - |
 | Fase 8: Testing y QA | PENDIENTE | - |
 | Fase 9: Deploy Go-Live | PENDIENTE | - |
@@ -458,23 +458,181 @@ DATASET:    production
 
 ---
 
-## Fase 5: Páginas y Componentes Next.js - PRÓXIMA
+## Fase 5: Páginas y Componentes Next.js - ✅ COMPLETADA (2026-02-16)
+
+### Tareas Completadas
+- [x] 6 UI Components (Container, Button, Card, Badge, SanityImage, PortableTextRenderer)
+- [x] 13 Section Components (SectionRenderer + 12 secciones)
+- [x] 4 Shared Components (Header, Footer, MobileNav, WhatsAppButton)
+- [x] Layout global (layout.tsx + not-found.tsx)
+- [x] 13 Páginas (Homepage, Blog, Blog [slug], Nosotros, Yogananda, Kriya Yoga, Autobiografía, Lecciones SRF, Programación, Escuela Dominical, Librería, Contacto, Donar)
+- [x] Fix TypeScript errors en lib.ts (fetchSanity params, redirect types)
+- [x] Build exitoso: 14 rutas, 0 errores
+- [x] Commit 9ab68dd (40 archivos, 1520 líneas)
+
+### Archivos Creados (38 archivos)
+
+**UI Components (6):**
+- `next-app/src/components/ui/Container.tsx` - Max-width wrapper responsive
+- `next-app/src/components/ui/Button.tsx` - Variantes primary/secondary/outline, sizes sm/md/lg
+- `next-app/src/components/ui/Card.tsx` - Card para posts/libros con imagen, badge, date
+- `next-app/src/components/ui/Badge.tsx` - Tags/categorías con colores
+- `next-app/src/components/ui/SanityImage.tsx` - Wrapper next/image + Sanity CDN
+- `next-app/src/components/ui/PortableTextRenderer.tsx` - Renderiza Portable Text de Sanity
+
+**Section Components (13):**
+- `next-app/src/components/sections/SectionRenderer.tsx` - Mapea _type → componente
+- `next-app/src/components/sections/HeroSection.tsx` - Hero con imagen overlay + CTA
+- `next-app/src/components/sections/TextSection.tsx` - Rich text con alignment
+- `next-app/src/components/sections/CtaSection.tsx` - Call to action con botones
+- `next-app/src/components/sections/ImageTextSection.tsx` - Imagen + texto (left/right)
+- `next-app/src/components/sections/ScheduleSection.tsx` - Horario meditación (async, fetch Sanity)
+- `next-app/src/components/sections/BlogFeedSection.tsx` - Feed posts recientes (async)
+- `next-app/src/components/sections/ContactFormSection.tsx` - Formulario dinámico ('use client')
+- `next-app/src/components/sections/DonationSection.tsx` - Sección donaciones
+- `next-app/src/components/sections/BannerSection.tsx` - Banner informativo
+- `next-app/src/components/sections/QuoteSection.tsx` - Citas con autor
+- `next-app/src/components/sections/GallerySection.tsx` - Galería grid/carousel
+- `next-app/src/components/sections/EventRegistrationSection.tsx` - Registro eventos ('use client')
+
+**Shared Components (4):**
+- `next-app/src/components/shared/Header.tsx` - Nav con dropdown, logo SRF Bogotá
+- `next-app/src/components/shared/Footer.tsx` - 3 columnas: about, links, contacto
+- `next-app/src/components/shared/MobileNav.tsx` - Hamburguesa responsive ('use client')
+- `next-app/src/components/shared/WhatsAppButton.tsx` - Botón flotante verde ('use client')
+
+**Layout (2):**
+- `next-app/src/app/layout.tsx` - RootLayout con Header/Footer/WhatsApp, metadata SEO
+- `next-app/src/app/not-found.tsx` - Página 404
+
+**Páginas (13):**
+- `next-app/src/app/page.tsx` - Homepage (hero gradient + intro + quote + posts + CTA)
+- `next-app/src/app/blog/page.tsx` - Blog listing
+- `next-app/src/app/blog/[slug]/page.tsx` - Blog post detalle (generateStaticParams + generateMetadata)
+- `next-app/src/app/nosotros/page.tsx` - Sobre SRF
+- `next-app/src/app/paramahansa-yogananda/page.tsx` - Biografía Yogananda
+- `next-app/src/app/kriya-yoga/page.tsx` - Kriya Yoga
+- `next-app/src/app/autobiografia-de/page.tsx` - Libro Autobiografía
+- `next-app/src/app/lecciones-srf/page.tsx` - Lecciones SRF
+- `next-app/src/app/programacion/page.tsx` - Programación + horarios + eventos
+- `next-app/src/app/escuela-dominical/page.tsx` - Escuela Dominical
+- `next-app/src/app/libreria/page.tsx` - Librería (grid de libros)
+- `next-app/src/app/contacto/page.tsx` - Contacto (info + formulario mailto)
+- `next-app/src/app/donar/page.tsx` - Donaciones
+
+### Archivos Modificados
+- `next-app/src/sanity/lib.ts` - Fix: `params ?? {}` y tipos redirect
+
+### Arquitectura Implementada
+- **Server Components** por defecto (data fetching directo con Sanity)
+- **'use client'** solo en: MobileNav, ContactFormSection, EventRegistrationSection, WhatsAppButton
+- **Patrón fallback**: Cada página intenta cargar de Sanity → si no hay contenido, muestra HTML estático
+- **generateStaticParams** en blog/[slug] para SSG
+- **generateMetadata** en TODAS las páginas para SEO
+- **SectionRenderer** mapea sections dinámicas de Sanity a componentes
+- **Mobile First** con Tailwind
+
+### Rutas Build Output
+```
+○ /                        (Static)
+○ /_not-found              (Static)
+○ /autobiografia-de        (Static)
+○ /blog                    (Static)
+● /blog/[slug]             (SSG)
+○ /contacto                (Static)
+○ /donar                   (Static)
+○ /escuela-dominical       (Static)
+○ /kriya-yoga              (Static)
+○ /lecciones-srf           (Static)
+○ /libreria                (Static)
+○ /nosotros                (Static)
+○ /paramahansa-yogananda   (Static)
+○ /programacion            (Static)
+```
+
+### Notas para el Equipo
+- **No hay remote Git configurado** — hacer `git remote add origin <url>` y luego `git push -u origin development`
+- Las páginas muestran contenido estático hardcoded hasta que se migre contenido a Sanity (Fase 6)
+- Para ver el sitio: `cd next-app && npm run dev` → http://localhost:3000
+- Nav items están hardcodeados en Header.tsx (podrían moverse a Sanity siteSettings en futuro)
+
+---
+
+## Fase 6: Migración de Contenido a Sanity - PRÓXIMA
 
 ### Objetivo
-Crear páginas y componentes que usen queries GROQ
+Migrar contenido extraído (JSON de Fase 1) a Sanity CMS para que las páginas carguen contenido dinámico en vez del fallback estático.
 
 ### Tareas Principales
-1. Crear layout.tsx global (Header, Footer, Navigation)
-2. Crear page.tsx (homepage)
-3. Crear blog/[slug]/page.tsx
-4. Crear eventos/page.tsx
-5. Crear libreria/page.tsx
-6. Crear SectionRenderer (renderiza secciones dinámicamente)
-7. Crear componentes compartidos
+1. Crear script de migración (leer JSONs → crear documentos Sanity)
+2. Migrar páginas estáticas como documentos `page` con secciones
+3. Migrar blog posts (38) como documentos `post`
+4. Migrar librería (37+ libros) como `bookstoreItem`
+5. Crear categorías del blog
+6. Configurar siteSettings (nav, footer, contacto)
+7. Subir imágenes a Sanity CDN
+8. Configurar horario de meditación (schedule)
+9. Verificar que todas las páginas cargan desde Sanity
 
 ### Dependencias
-- Fase 4: Cliente Sanity ✅ COMPLETADA
-- Fase 4.5: Sanity Config + MCP ✅ COMPLETADA
+- Fase 5: Páginas Next.js ✅ COMPLETADA
+- Sanity Studio accesible (jovlwcbx / production)
+- SANITY_API_WRITE_TOKEN configurado en .env.local
+
+### Archivos de Referencia
+- `/doc/content-extracted/*.json` (14 archivos con contenido)
+- `/doc/content-extracted/screenshots/*.png` (referencia visual)
+
+---
+
+## Auditoría Fase 3+4 - ✅ COMPLETADA (2026-02-20)
+
+### Auditoría Fase 3: Schemas de Sanity
+**Puntaje inicial: 6/10 → Puntaje final: 9/10**
+
+**Correcciones CRÍTICAS:**
+- [x] `isUnique` agregado a slug fields en: post, category, page, event, bookstoreItem
+- [x] `scheduleSection` y `eventRegistrationSection` agregados al array de page.ts
+- [x] `sections` con validación min(1) en page.ts
+
+**Correcciones MAYORES:**
+- [x] Refactored inline objects → `defineField`/`defineArrayMember` en 9 schemas
+- [x] event.ts: validación endDate >= startDate + capacity positive().integer()
+- [x] bookstoreItem.ts: price min(0), pages positive().integer()
+- [x] schedule.ts: time regex HH:MM, year min/max, defineArrayMember
+- [x] siteSettings.ts: email regex, preview config, defineArrayMember en socialMedia
+- [x] legacyRedirect.ts: paths validados con regex /^\//
+- [x] heroSection.ts: imageAlt ahora required + defineField en CTA
+- [x] gallerySection.ts: alt ahora required + defineArrayMember
+- [x] contactFormSection.ts: label + placeholder + options agregados al schema
+- [x] eventRegistrationSection.ts: label + placeholder agregados al schema
+
+**14 archivos modificados, 0 errores TypeScript, build OK**
+
+### Auditoría Fase 4: Cliente + Queries + Types
+**Puntaje inicial: 5/10 → Puntaje final: 9/10**
+
+**Correcciones CRÍTICAS:**
+- [x] types.ts sincronizado con schemas: ScheduleSection, ImageTextSection, BannerSection, GallerySection, FormField, DonationSection, EventRegistrationSection, HeroSection
+- [x] PAGE_BY_SLUG_QUERY: `gallery[]` → `images[]` (match schema field name)
+- [x] HOME_PAGE_QUERY: misma corrección
+- [x] Removed redundant projections (heroImage, mainImage en sections)
+
+**Correcciones MAYORES:**
+- [x] RELATED_POSTS_QUERY: `[0..3]` → `[0..2]` (3 items, no 4)
+- [x] lib.ts: dynamic import() → static imports (performance)
+- [x] middleware.ts: API call per-request → in-memory cache con TTL 5min
+- [x] searchPosts: agrega wildcard suffix a searchTerm
+- [x] getAllRedirects() helper agregado para middleware caching
+
+**Componentes actualizados:**
+- [x] BannerSection.tsx: `data.text` → `data.message`
+- [x] ImageTextSection.tsx: `data.text` → `data.heading` + `data.body` (PortableText)
+- [x] ScheduleSection.tsx: soporta items inline del section + fallback a schedule document
+- [x] GallerySection.tsx: `img.asset` → `img.image` (tipo correcto)
+- [x] blog/[slug]/page.tsx: fix generateStaticParams type cast
+
+**Build: 14/14 rutas, 0 errores TypeScript, middleware OK**
 
 ---
 
@@ -485,11 +643,11 @@ Crear páginas y componentes que usen queries GROQ
 | Fase 0: Setup Inicial | ✅ COMPLETADA | 2026-02-16 |
 | Fase 1: Extracción de Contenido | ✅ COMPLETADA | 2026-02-16 |
 | Fase 2: Sistema de Diseño | ✅ COMPLETADA | 2026-02-16 |
-| Fase 3: Schemas de Sanity | ✅ COMPLETADA | 2026-02-16 |
-| Fase 4: Cliente Sanity + Queries | ✅ COMPLETADA | 2026-02-16 |
+| Fase 3: Schemas de Sanity | ✅ AUDITADA Y CORREGIDA | 2026-02-20 |
+| Fase 4: Cliente Sanity + Queries | ✅ AUDITADA Y CORREGIDA | 2026-02-20 |
 | Fase 4.5: Configuración + MCP | ✅ COMPLETADA | 2026-02-16 |
-| Fase 5: Páginas Next.js | 🔲 PENDIENTE | - |
-| Fase 6: Migración Contenido | PENDIENTE | - |
+| Fase 5: Páginas Next.js | ✅ COMPLETADA | 2026-02-16 |
+| Fase 6: Migración Contenido | 🔲 PRÓXIMA | - |
 | Fase 7: Redirects 301 | PENDIENTE | - |
 | Fase 8: Testing y QA | PENDIENTE | - |
 | Fase 9: Deploy Go-Live | PENDIENTE | - |
@@ -497,4 +655,4 @@ Crear páginas y componentes que usen queries GROQ
 
 ---
 
-*Última actualización: 2026-02-16 20:15 - Fase 4.5 Completada (Sanity + MCP)*
+*Última actualización: 2026-02-20 — Auditoría Fases 3+4 completada (schemas corregidos, types sincronizados, queries optimizadas, build OK)*

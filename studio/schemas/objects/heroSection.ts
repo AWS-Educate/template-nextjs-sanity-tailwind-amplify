@@ -27,15 +27,29 @@ export default defineType({
       name: 'imageAlt',
       title: 'Image Alt Text',
       type: 'string',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'cta',
       title: 'Call to Action',
       type: 'object',
       fields: [
-        {name: 'text', type: 'string', title: 'Button Text'},
-        {name: 'href', type: 'string', title: 'Button URL'},
-        {name: 'variant', type: 'string', title: 'Button Variant', options: {list: ['primary', 'secondary']}},
+        defineField({
+          name: 'text',
+          title: 'Button Text',
+          type: 'string',
+        }),
+        defineField({
+          name: 'href',
+          title: 'Button URL',
+          type: 'string',
+        }),
+        defineField({
+          name: 'variant',
+          title: 'Button Variant',
+          type: 'string',
+          options: {list: ['primary', 'secondary']},
+        }),
       ],
     }),
   ],

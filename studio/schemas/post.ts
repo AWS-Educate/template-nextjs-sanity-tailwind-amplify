@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'post',
@@ -18,6 +18,7 @@ export default defineType({
       options: {
         source: 'title',
         maxLength: 96,
+        isUnique: (value, context) => context.defaultIsUnique(value, context),
       },
       validation: (rule) => rule.required(),
     }),
@@ -26,6 +27,7 @@ export default defineType({
       title: 'Excerpt',
       type: 'text',
       rows: 3,
+      validation: (rule) => rule.max(200),
     }),
     defineField({
       name: 'category',
@@ -37,7 +39,7 @@ export default defineType({
       name: 'tags',
       title: 'Tags',
       type: 'array',
-      of: [{type: 'string'}],
+      of: [defineArrayMember({type: 'string'})],
       options: {
         layout: 'tags',
       },

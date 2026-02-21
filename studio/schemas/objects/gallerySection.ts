@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'gallerySection',
@@ -10,26 +10,27 @@ export default defineType({
       title: 'Gallery Images',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           type: 'object',
           fields: [
-            {
+            defineField({
               name: 'image',
               title: 'Image',
               type: 'image',
               options: {hotspot: true},
               validation: (rule) => rule.required(),
-            },
-            {
+            }),
+            defineField({
               name: 'alt',
               title: 'Alt Text',
               type: 'string',
-            },
-            {
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
               name: 'caption',
               title: 'Caption',
               type: 'string',
-            },
+            }),
           ],
           preview: {
             select: {
@@ -44,7 +45,7 @@ export default defineType({
               }
             },
           },
-        },
+        }),
       ],
       validation: (rule) => rule.required().min(1),
     }),

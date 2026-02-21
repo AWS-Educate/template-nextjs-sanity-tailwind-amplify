@@ -18,6 +18,7 @@ export default defineType({
       options: {
         source: 'title',
         maxLength: 96,
+        isUnique: (value, context) => context.defaultIsUnique(value, context),
       },
       validation: (rule) => rule.required(),
     }),
@@ -36,7 +37,10 @@ export default defineType({
         {type: 'blogFeedSection'},
         {type: 'contactFormSection'},
         {type: 'donationSection'},
+        {type: 'scheduleSection'},
+        {type: 'eventRegistrationSection'},
       ],
+      validation: (rule) => rule.min(1),
     }),
     defineField({
       name: 'publishedAt',

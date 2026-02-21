@@ -1,5 +1,5 @@
 /**
- * Sanity Types - Generated from schemas
+ * Sanity Types - Synced with studio/schemas/
  * Run: cd studio && npx sanity typegen generate
  */
 
@@ -137,8 +137,8 @@ export interface HeroSection {
   heading: string
   subheading?: string
   image: Image
-  imageAlt?: string
-  cta?: {text: string; href: string; variant: 'primary' | 'secondary'}
+  imageAlt: string
+  cta?: {text?: string; href?: string; variant?: 'primary' | 'secondary'}
 }
 
 export interface TextSection {
@@ -152,21 +152,29 @@ export interface CtaSection {
   _type: 'ctaSection'
   heading: string
   description?: string
-  buttons: {text: string; href: string; variant: 'primary' | 'secondary' | 'outline'}[]
+  buttons: {text: string; href: string; variant?: 'primary' | 'secondary' | 'outline'}[]
   backgroundColor?: 'primary' | 'secondary' | 'neutral' | 'transparent'
 }
 
 export interface ImageTextSection {
   _type: 'imageTextSection'
   image: Image
-  text: string
+  imageAlt?: string
+  heading?: string
+  body?: PortableText
   imagePosition?: 'left' | 'right'
 }
 
 export interface ScheduleSection {
   _type: 'scheduleSection'
-  title?: string
-  schedule?: {_ref: string; _type: 'reference'}
+  items: ScheduleSectionItem[]
+}
+
+export interface ScheduleSectionItem {
+  day: string
+  time: string
+  title: string
+  description?: string
 }
 
 export interface BlogFeedSection {
@@ -187,13 +195,14 @@ export interface DonationSection {
   _type: 'donationSection'
   heading: string
   description?: PortableText
-  donationLink?: string
+  donationLink: string
 }
 
 export interface BannerSection {
   _type: 'bannerSection'
-  text: string
+  message: string
   backgroundColor?: 'primary' | 'secondary' | 'warning'
+  icon?: string
 }
 
 export interface QuoteSection {
@@ -206,16 +215,21 @@ export interface QuoteSection {
 
 export interface GallerySection {
   _type: 'gallerySection'
-  title?: string
-  images: {asset: {_ref: string}; alt?: string; caption?: string}[]
+  images: GalleryItem[]
   layout?: 'grid' | 'carousel'
+}
+
+export interface GalleryItem {
+  image: Image
+  alt: string
+  caption?: string
 }
 
 export interface EventRegistrationSection {
   _type: 'eventRegistrationSection'
   heading: string
   description?: string
-  eventLink?: string
+  eventLink: string
   formFields?: FormField[]
 }
 
@@ -258,10 +272,10 @@ export interface PortableText {
 
 export interface FormField {
   name: string
-  type: 'text' | 'email' | 'textarea' | 'select' | 'checkbox'
   label: string
-  required?: boolean
+  type: 'text' | 'email' | 'phone' | 'textarea' | 'select' | 'checkbox' | 'date'
   placeholder?: string
+  required?: boolean
   options?: {label: string; value: string}[]
 }
 

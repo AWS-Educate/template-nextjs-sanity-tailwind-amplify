@@ -13,7 +13,7 @@ interface Props {
 
 export async function generateStaticParams() {
   const slugs = await getAllPostsSlugs()
-  return (slugs as {slug: string}[]).map(s => ({slug: s.slug}))
+  return (slugs as {params: {slug: string}}[]).map(s => ({slug: s.params.slug}))
 }
 
 export async function generateMetadata({params}: Props): Promise<Metadata> {

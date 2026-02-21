@@ -18,6 +18,7 @@ export default defineType({
       options: {
         source: 'title',
         maxLength: 96,
+        isUnique: (value, context) => context.defaultIsUnique(value, context),
       },
       validation: (rule) => rule.required(),
     }),
@@ -40,6 +41,7 @@ export default defineType({
       name: 'pages',
       title: 'Number of Pages',
       type: 'number',
+      validation: (rule) => rule.positive().integer(),
     }),
     defineField({
       name: 'language',
@@ -51,6 +53,7 @@ export default defineType({
       name: 'price',
       title: 'Price (COP)',
       type: 'number',
+      validation: (rule) => rule.min(0),
     }),
     defineField({
       name: 'inStock',

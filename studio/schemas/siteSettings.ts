@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'siteSettings',
@@ -34,6 +34,11 @@ export default defineType({
       name: 'contactEmail',
       title: 'Contact Email',
       type: 'string',
+      validation: (rule) =>
+        rule.regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, {
+          name: 'email',
+          invert: false,
+        }),
     }),
     defineField({
       name: 'contactPhone',
@@ -51,13 +56,32 @@ export default defineType({
       title: 'Social Media Links',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           type: 'object',
           fields: [
-            {name: 'platform', type: 'string', title: 'Platform', options: {list: ['Facebook', 'Instagram', 'Twitter', 'YouTube', 'LinkedIn']}},
-            {name: 'url', type: 'url', title: 'URL'},
+            defineField({
+              name: 'platform',
+              title: 'Platform',
+              type: 'string',
+              options: {
+                list: ['Facebook', 'Instagram', 'Twitter', 'YouTube', 'LinkedIn'],
+              },
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'url',
+              title: 'URL',
+              type: 'url',
+              validation: (rule) => rule.required(),
+            }),
           ],
-        },
+          preview: {
+            select: {
+              title: 'platform',
+              subtitle: 'url',
+            },
+          },
+        }),
       ],
     }),
     defineField({
@@ -73,4 +97,10 @@ export default defineType({
       rows: 2,
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'logo',
+    },
+  },
 })

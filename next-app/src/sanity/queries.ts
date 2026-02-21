@@ -1,7 +1,6 @@
 /**
  * GROQ Queries for Sanity CMS
  * Optimized projection to minimize data transfer
- * Use projection to limit fields and avoid over-fetching
  */
 
 // ============================================================================
@@ -95,7 +94,7 @@ export const POST_BY_SLUG_QUERY = `
 `
 
 export const RELATED_POSTS_QUERY = `
-  *[_type == "post" && category._ref == $categoryId && _id != $postId] | order(publishedAt desc)[0..3] {
+  *[_type == "post" && category._ref == $categoryId && _id != $postId] | order(publishedAt desc)[0..2] {
     _id,
     title,
     slug,
@@ -141,11 +140,8 @@ export const PAGE_BY_SLUG_QUERY = `
       _key,
       ...,
       "image": image.asset->url,
-      "mainImage": mainImage.asset->url,
-      "heroImage": image.asset->url,
-      "blogFeedCategory": categoryFilter->title,
-      gallery[] {
-        "image": asset->url,
+      images[] {
+        "image": image.asset->url,
         alt,
         caption
       }
@@ -169,8 +165,11 @@ export const HOME_PAGE_QUERY = `
       _key,
       ...,
       "image": image.asset->url,
-      "heroImage": image.asset->url,
-      "gallery": gallery[] { "image": asset->url, alt, caption }
+      images[] {
+        "image": image.asset->url,
+        alt,
+        caption
+      }
     },
     seo {
       title,
@@ -346,9 +345,6 @@ export const ALL_REDIRECTS_QUERY = `
 // UTILITY QUERIES
 // ============================================================================
 
-/**
- * Get slug for all pages for static generation
- */
 export const ALL_PAGES_SLUGS_QUERY = `
   *[_type == "page"] {
     "params": {
@@ -357,9 +353,6 @@ export const ALL_PAGES_SLUGS_QUERY = `
   }
 `
 
-/**
- * Get slug for all blog posts for static generation
- */
 export const ALL_POSTS_SLUGS_QUERY = `
   *[_type == "post"] {
     "params": {
@@ -368,9 +361,6 @@ export const ALL_POSTS_SLUGS_QUERY = `
   }
 `
 
-/**
- * Get slug for all events for static generation
- */
 export const ALL_EVENTS_SLUGS_QUERY = `
   *[_type == "event"] {
     "params": {
@@ -379,9 +369,6 @@ export const ALL_EVENTS_SLUGS_QUERY = `
   }
 `
 
-/**
- * Get slug for all books for static generation
- */
 export const ALL_BOOKS_SLUGS_QUERY = `
   *[_type == "bookstoreItem"] {
     "params": {
@@ -390,11 +377,8 @@ export const ALL_BOOKS_SLUGS_QUERY = `
   }
 `
 
-/**
- * Search posts by title or excerpt
- */
 export const SEARCH_POSTS_QUERY = `
-  *[_type == "post" && (title match $searchTerm || excerpt match $searchTerm)] | order(publishedAt desc)[0..10] {
+  *[_type == "post" && (title match $searchTerm || excerpt match $searchTerm)] | order(publishedAt desc)[0..9] {
     _id,
     title,
     slug,
