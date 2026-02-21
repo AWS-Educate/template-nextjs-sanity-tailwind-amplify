@@ -15,8 +15,8 @@
 | Fase 3: Schemas de Sanity | ✅ COMPLETADA | 2026-02-16 |
 | Fase 4: Cliente Sanity + Queries | ✅ COMPLETADA | 2026-02-16 |
 | Fase 5: Páginas Next.js | ✅ COMPLETADA | 2026-02-16 |
-| Fase 6: Migración Contenido | 🔲 PRÓXIMA | - |
-| Fase 7: Redirects 301 | PENDIENTE | - |
+| Fase 6: Migración Contenido | ✅ COMPLETADA | 2026-02-21 |
+| Fase 7: Redirects 301 + QA | 🔲 PRÓXIMA | - |
 | Fase 8: Testing y QA | PENDIENTE | - |
 | Fase 9: Deploy Go-Live | PENDIENTE | - |
 | Fase 10: Post-Migración | PENDIENTE | - |
@@ -647,12 +647,65 @@ Migrar contenido extraído (JSON de Fase 1) a Sanity CMS para que las páginas c
 | Fase 4: Cliente Sanity + Queries | ✅ AUDITADA Y CORREGIDA | 2026-02-20 |
 | Fase 4.5: Configuración + MCP | ✅ COMPLETADA | 2026-02-16 |
 | Fase 5: Páginas Next.js | ✅ COMPLETADA | 2026-02-16 |
-| Fase 6: Migración Contenido | 🔲 PRÓXIMA | - |
-| Fase 7: Redirects 301 | PENDIENTE | - |
+| Fase 6: Migración Contenido | ✅ COMPLETADA | 2026-02-21 |
+| Fase 7: Redirects 301 + QA | 🔲 PRÓXIMA | - |
 | Fase 8: Testing y QA | PENDIENTE | - |
 | Fase 9: Deploy Go-Live | PENDIENTE | - |
 | Fase 10: Post-Migración | PENDIENTE | - |
 
 ---
 
-*Última actualización: 2026-02-20 — Auditoría Fases 3+4 completada (schemas corregidos, types sincronizados, queries optimizadas, build OK)*
+## Fase 6: Migración de Contenido a Sanity CMS - COMPLETADA (2026-02-21)
+
+### Resumen
+Migración completa del contenido extraído de Wix → Sanity CMS usando scripts TypeScript idempotentes.
+
+### Resultado de la migración
+
+| Tipo | Documentos | Imágenes | Notas |
+|------|-----------|----------|-------|
+| category | 2 | - | Eventos, Junio |
+| siteSettings | 1 singleton | 1 (logo) | Nav, footer, social, contact |
+| page | 14 | ~35 subidas | Todas las páginas del sitio |
+| post | 6 stubs | 4 | Sin body — stubs con título/fecha/imagen |
+| bookstoreItem | 40 | 0 | Creados sin portadas (Wix 403) |
+| schedule | 1 | - | 5 items (Jue/Sab/Dom servicios + ED) |
+| event | 1 | 1 | Retiro en línea oct 2025 |
+| legacyRedirect | 2 | - | /_api/ y /_functions/ → / |
+| **Total imágenes CDN** | | **49** | Subidas a Sanity CDN |
+
+### Archivos creados
+- `scripts/migrate.ts` — Orquestador principal
+- `scripts/migrate/config.ts` — Cliente Sanity write
+- `scripts/migrate/utils.ts` — slugify, textToPortableText, uploadImageFromUrl, docExists
+- `scripts/migrate/image-cache.ts` — Cache persistente `.image-cache.json`
+- `scripts/migrate/section-mapper.ts` — Mapeo de 14+ tipos de sección Wix → Sanity
+- `scripts/migrate/01-categories.ts` — 2 categorías
+- `scripts/migrate/02-site-settings.ts` — Singleton siteSettings
+- `scripts/migrate/03-pages.ts` — 14 páginas con secciones
+- `scripts/migrate/04-posts.ts` — 6 post stubs
+- `scripts/migrate/05-bookstore.ts` — 40 libros/productos
+- `scripts/migrate/06-schedule.ts` — Horario semanal
+- `scripts/migrate/07-events.ts` — 1 evento
+- `scripts/migrate/08-legacy-redirects.ts` — 2 redirects Wix
+- `scripts/.env.example` — Template token
+- `.gitignore` actualizado: `.image-cache.json` ignorado
+
+### Problemas encontrados y resueltos
+1. **Token de organización vs proyecto:** Token org da userId `g-xxx` → rechazado. Necesita token nivel proyecto con rol Editor
+2. **Wix CDN 403 en URLs con transforms:** `/v1/fill/w_xxx,...` → stripped incorrectamente. Fix: regex extrae solo `~mv2.ext`
+3. **Portadas de libros sin imagen:** Primera pasada falló, segunda pasada los libros ya existían → skipped. Pendiente parche manual o script de actualización
+
+### Comando de ejecución
+```bash
+npx tsx --env-file=scripts/.env scripts/migrate.ts
+```
+
+### Siguiente paso: Fase 7 — Redirects 301 + QA
+- Verificar que todas las páginas cargan en localhost:3000
+- Verificar Sanity Studio en localhost:3333
+- Implementar redirects reales para rutas Wix → Next.js
+
+---
+
+*Última actualización: 2026-02-21 — Fase 6 migración completa (14 páginas, 40 libros, 49 imágenes CDN, servidores activos)*

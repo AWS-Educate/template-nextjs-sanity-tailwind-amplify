@@ -81,6 +81,7 @@ coverage/
 # ===== CACHE =====
 .cache/
 .sass-cache/
+.image-cache.json
 
 # ===== TEMP FILES =====
 *.tmp

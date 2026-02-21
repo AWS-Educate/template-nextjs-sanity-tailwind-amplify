@@ -2,6 +2,22 @@
 
 Modern stack with **Sanity CMS**, **Next.js (App Router)**, and **Tailwind CSS**.
 
+## 📚 Sanity CMS - Fuente Única de Verdad (CRITICAL)
+
+**DIRECTIVA:** Para CUALQUIER tema relacionado con Sanity (schemas, queries GROQ, configuración, plugins, Visual Editing, APIs, best practices, troubleshooting), Claude DEBE consultar primero la documentación oficial completa:
+
+> **URL:** https://www.sanity.io/docs/llms-full.txt
+
+**Cuándo consultar:**
+- Antes de crear o modificar schemas
+- Antes de escribir queries GROQ
+- Al configurar cliente Sanity, plugins o integraciones
+- Al resolver errores relacionados con Sanity
+- Al implementar features como Visual Editing, webhooks, CDN, image pipeline
+- Al migrar contenido o configurar Sanity Studio
+
+**Cómo usar:** Fetch la URL con `WebFetch` y buscar la sección relevante antes de implementar.
+
 ## 🚀 Quick Start
 
 1. **Clone and Setup**:
@@ -62,6 +78,16 @@ Modern stack with **Sanity CMS**, **Next.js (App Router)**, and **Tailwind CSS**
 - **Ubicación:** `/doc/PHASE-PROGRESS.md` (centralizado con toda la documentación)
 - **Plan de migración:** `/doc/MIGRATION-PLAN.md` (referencia principal del proyecto)
 - **Índice:** `/doc/README.md` (guía de la estructura del proyecto)
+
+**MEMORIA PERSISTENTE (CRITICAL)**:
+- 🧠 Cuando el usuario diga **"memory"**, **"memoria"** o **"guarda memoria"**: guardar en `/doc/memory/`
+- **Ubicación:** `/doc/memory/` (dentro del proyecto, versionado con git)
+- **Archivos:**
+  - `MEMORY.md` — Estado general, preferencias del usuario, siguiente paso
+  - `architecture.md` — Estructura de archivos, rutas, design tokens
+  - `audit-notes.md` — Hallazgos de auditorías, fixes aplicados
+  - Crear archivos adicionales por tema si es necesario
+- **NO usar** la carpeta `.claude/projects/.../memory/` del sistema — usar SOLO `/doc/memory/`
 
 ### Automated Workflows
 
