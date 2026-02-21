@@ -11,11 +11,12 @@
 |------|--------|-------|
 | Fase 0: Setup Inicial | ✅ COMPLETADA | 2026-02-16 |
 | Fase 1: Extracción de Contenido | ✅ COMPLETADA | 2026-02-16 |
-| Fase 2: Sistema de Diseño | 🔄 LISTA PARA INICIAR | - |
-| Fase 3: Schemas de Sanity | PENDIENTE | - |
-| Fase 4: Cliente Sanity + Queries | PENDIENTE | - |
-| Fase 5: Páginas Next.js | PENDIENTE | - |
-| Fase 6: Migración Contenido | PENDIENTE | - |
+| Fase 2: Sistema de Diseño | ✅ COMPLETADA | 2026-02-16 |
+| Fase 3: Schemas de Sanity | ✅ COMPLETADA | 2026-02-16 |
+| Fase 4: Cliente Sanity + Queries | ✅ COMPLETADA | 2026-02-16 |
+| Fase 4.5: Configuración + MCP | ✅ COMPLETADA | 2026-02-16 |
+| Fase 5: Páginas Next.js | ✅ COMPLETADA | 2026-02-16 |
+| Fase 6: Migración Contenido | 🔲 PRÓXIMA | - |
 | Fase 7: Redirects 301 | PENDIENTE | - |
 | Fase 8: Testing y QA | PENDIENTE | - |
 | Fase 9: Deploy Go-Live | PENDIENTE | - |
@@ -165,13 +166,23 @@
 
 ---
 
+## Fase 5: Páginas y Componentes Next.js - ✅ COMPLETADA (2026-02-16)
+
+- 38 archivos creados (6 UI + 13 sections + 4 shared + 2 layout + 13 páginas)
+- 1520 líneas de código
+- Build exitoso: 14 rutas, 0 errores
+- Commit 9ab68dd en `development`
+- Detalle completo en `/doc/PHASE-PROGRESS.md`
+
 ## Próximos Pasos
 
-**Fase 2: Sistema de Diseño** - Implementar paleta de colores y fuentes
-- Archivo objetivo: `next-app/src/app/globals.css`
-- Paleta: Azul #173981, Naranja #DE6B2F, Oliva #696C0E, Crema #F0F0E6
-- Fuentes: Source Serif 4, Source Sans 3, Cormorant Garamond
+**Fase 6: Migración de Contenido a Sanity** — migrar JSON extraídos a documentos Sanity
+- Crear script migración → leer `/doc/content-extracted/*.json` → crear docs en Sanity
+- Necesita SANITY_API_WRITE_TOKEN en .env.local
+- Referencia: `/doc/PHASE-PROGRESS.md` (sección Fase 6)
+
+**Pendiente Git:** Configurar remote (`git remote add origin <url>`) y push
 
 ---
 
-*Última actualización: 2026-02-16 18:30*
+*Última actualización: 2026-02-16 — Fase 5 Completada*

@@ -13,8 +13,10 @@
 - **Phase 7:** NEXT → Redirects 301 + QA
 - **Phases 8-10:** Pending (testing, deploy, post-migration)
 - **Servers running:** localhost:3000 (Next.js) + localhost:3333 (Sanity Studio)
-- **Git remote:** NOT configured yet (local only)
+- **Git remote:** `https://github.com/Academia-Semillas/yogananda-bogota.org.git` (HTTPS) — push pendiente
 - **Branch:** `development` (never edit `main` directly)
+- **GitHub org:** `Academia-Semillas` (también miembro de `AWS-Educate`, `SRF-Bta`)
+- **gh CLI user:** `EdwinFdoGarcia` — autenticado con token `gho_*` (scopes: repo, workflow, read:org, gist)
 
 ## Design System Work (2026-02-21 — Tidewinds + Figma)
 - **Figma file:** `9zHkkJnGqIYrEfyDdhYDIH` (Web Aterrizaje Visita Monastica 2024)
@@ -35,6 +37,20 @@
 ## Key Architecture
 - See [architecture.md](architecture.md) for detailed file map
 - See [audit-notes.md](audit-notes.md) for audit findings
+
+## MCP Servers Configured (2026-02-21)
+- **github** → `npx @modelcontextprotocol/server-github` — config en `~/Library/Application Support/Claude/claude_desktop_config.json`
+  - Token: `gho_*` del `gh auth` (mismo token, scopes: repo, workflow, read:org)
+  - **IMPORTANTE:** Requiere reinicio de Claude Code para activarse
+- **sanity** → `npx @sanity/mcp@latest` — config en `.claude/mcp-servers.json` del proyecto
+- **jetbrains** → WebStorm MCP — config en claude_desktop_config.json
+- **figma** / **claude.ai Figma** → disponibles via Claude.ai
+
+## SSH Setup (2026-02-21)
+- Llave generada: `~/.ssh/id_ed25519` (Ed25519, email: centro@yogananda-bogota.org)
+- Llave pública agregada a GitHub cuenta `EdwinFdoGarcia`
+- **Problema:** SSH timing out — usar HTTPS con `gh auth` como credential helper
+- **Comando para activar:** `gh auth setup-git` (ya ejecutado)
 
 ## User Preferences
 - **Language:** Communicates in Spanish, code/docs in English
