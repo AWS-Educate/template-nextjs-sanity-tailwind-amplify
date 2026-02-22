@@ -1,6 +1,6 @@
 # 📦 Template Information
 
-This is a reusable project template extracted from Academia Semillas.
+This is a reusable project template
 
 ## ✨ What's Included
 

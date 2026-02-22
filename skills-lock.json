@@ -1,0 +1,135 @@
+{
+  "version": 1,
+  "skills": {
+    "Agent Development": {
+      "source": "anthropics/claude-code",
+      "sourceType": "github",
+      "computedHash": "4931c2867890bfef5881225adb691c3d719fe9ad556e3d5fae15f83e0668fa60"
+    },
+    "Command Development": {
+      "source": "anthropics/claude-code",
+      "sourceType": "github",
+      "computedHash": "bca581f0a2789f75d9501499b9f4dc354eb40b213ccd23d13f5b87299db1f84a"
+    },
+    "Hook Development": {
+      "source": "anthropics/claude-code",
+      "sourceType": "github",
+      "computedHash": "a1721df65785b6c0439d4326cdee0cb2b6aa98de09fc98463afc3e040fe00ce9"
+    },
+    "MCP Integration": {
+      "source": "anthropics/claude-code",
+      "sourceType": "github",
+      "computedHash": "99cfef49810cb80a39762a79dbb6a80d486ea56cfa1a81ed10cae0a5a296b496"
+    },
+    "Plugin Settings": {
+      "source": "anthropics/claude-code",
+      "sourceType": "github",
+      "computedHash": "b4be0bf62782da83e962aa759e7d5efb1d5934b81554f1d15801fdf5e01b18a4"
+    },
+    "Plugin Structure": {
+      "source": "anthropics/claude-code",
+      "sourceType": "github",
+      "computedHash": "c4e9b3ea36efad4ab599465aaac71f81dc3320a183920678fe1587181c446b07"
+    },
+    "Writing Hookify Rules": {
+      "source": "anthropics/claude-code",
+      "sourceType": "github",
+      "computedHash": "429463a57a711ee42d1373a726e66ccc2189118022f0c281dbb48b28796d417f"
+    },
+    "audit-website": {
+      "source": "squirrelscan/skills",
+      "sourceType": "github",
+      "computedHash": "2c060290f90340e8bb6009502ec936b8ebb3ff889332a43e24bf210528ebba9f"
+    },
+    "brand-guidelines": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "4aa754f4f7fc54ac3e7f6e2fb55c0e2fb14b7d70da077b41a86bd1889ff9094c"
+    },
+    "canvas-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "a2fe47d24b3fd8e52faef731fff099c557e698083cd644b2e5695cc4dd8c7715"
+    },
+    "claude-automation-recommender": {
+      "source": "anthropics/claude-plugins-official",
+      "sourceType": "github",
+      "computedHash": "47e672bfcaa399d473cb33f2f298263d8554774314a71ef8761bd8d040351ceb"
+    },
+    "claude-md-improver": {
+      "source": "anthropics/claude-plugins-official",
+      "sourceType": "github",
+      "computedHash": "d6707ed0467d9664d0f9d2c44724c8fb1814475ec6d3c62a5d54bbbe807e0775"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "computedHash": "6412eb4eb3b91595ebab937f0c69501240e7ba761b3d82510b5cf506ec5c7adc"
+    },
+    "frontend-design": {
+      "source": "anthropics/claude-plugins-official",
+      "sourceType": "github",
+      "computedHash": "e8118284a6365753790d44bb2758a6032b3af27fa84696428d9233f2be0f4e78"
+    },
+    "next-best-practices": {
+      "source": "vercel-labs/next-skills",
+      "sourceType": "github",
+      "computedHash": "515ba75178bd44875812d9a560bdf14651f86709f89cf1d4f209638e879807f3"
+    },
+    "playground": {
+      "source": "anthropics/claude-plugins-official",
+      "sourceType": "github",
+      "computedHash": "a499ef286b1bcda80afe4de53b2d0a5a84c317c11cfdafc2af6e53985c77940d"
+    },
+    "remotion-best-practices": {
+      "source": "remotion-dev/skills",
+      "sourceType": "github",
+      "computedHash": "a2ebe92433006ce81bbdcfe24984663678bbbb20991a3686e34814de1097c44c"
+    },
+    "remotion-render": {
+      "source": "inference-sh-6/skills",
+      "sourceType": "github",
+      "computedHash": "479d21768c7997f63785ec577ad03bbaab3382a36d589c3461a00fb201be81a5"
+    },
+    "seo-audit": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "computedHash": "6bd4cde58bb701b5dc90a0fae2f0ea3efc7c3e6fd2ae754083fa659930e7d39f"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "a096b9af85c9d954374ebe3f7a23b5b7737ed3f35fe2a8f5893742c4e00dba1c"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "computedHash": "e688fcd4c5693e14ebd00d48e982dbd2be060fbea89f5f60531e79c704a1bc28"
+    },
+    "vercel-composition-patterns": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "computedHash": "f98931159fa9c7fed043bcd18a891a46dcf89ababa38df13a4c5b7b30dc0ce07"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "computedHash": "4365be772fd3b41994a72ad478472c6d680678e7f3859860ab010e9c46e48ee0"
+    },
+    "web-artifacts-builder": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "143730c6db11d82d8c5db4d0cf8f435421983f1fc510b24f77ee9a0e8bae7704"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "computedHash": "a6a44d5498f7e8f68289902f3dedfc6f38ae0cee1e96527c80724cf27f727c2a"
+    },
+    "webapp-testing": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "computedHash": "cf8e5916d474886bd67b09691247f43f331523008b7d366064bc607ab42d6302"
+    }
+  }
+}
