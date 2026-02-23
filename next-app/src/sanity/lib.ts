@@ -114,7 +114,7 @@ export async function getEventBySlug(slug: string): Promise<Event | null> {
 }
 
 // ============================================================================
-// MEDITATION SCHEDULE
+// SCHEDULE
 // ============================================================================
 
 export async function getCurrentSchedule(): Promise<Schedule | null> {

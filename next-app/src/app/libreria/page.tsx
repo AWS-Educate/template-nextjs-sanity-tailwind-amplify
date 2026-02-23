@@ -5,11 +5,11 @@ import Card from '@/components/ui/Card'
 import {getPageBySlug, getAllBooks} from '@/sanity/lib'
 
 export const metadata: Metadata = {
-  title: 'Librería',
-  description: 'Libros de Paramahansa Yogananda y Self-Realization Fellowship disponibles en Bogotá.',
+  title: 'Store',
+  description: 'Browse our products and publications.',
 }
 
-export default async function LibreriaPage() {
+export default async function StorePage() {
   const page = await getPageBySlug('libreria')
   if (page?.sections?.length) return <SectionRenderer sections={page.sections} />
 
@@ -18,9 +18,9 @@ export default async function LibreriaPage() {
   return (
     <section className="py-16">
       <Container>
-        <h1 className="text-center mb-4">Librería</h1>
+        <h1 className="text-center mb-4">Store</h1>
         <p className="text-center text-neutral-500 max-w-xl mx-auto mb-12">
-          Libros y publicaciones de Paramahansa Yogananda y Self-Realization Fellowship.
+          Browse our products and publications.
         </p>
         {books.length ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -28,7 +28,7 @@ export default async function LibreriaPage() {
               <Card
                 key={book._id}
                 title={book.title}
-                description={book.author ? `Por ${book.author}` : undefined}
+                description={book.author ? `By ${book.author}` : undefined}
                 image={book.image}
                 badge={book.language || undefined}
                 href={`/libreria/${book.slug.current}`}
@@ -36,7 +36,7 @@ export default async function LibreriaPage() {
             ))}
           </div>
         ) : (
-          <p className="text-center text-neutral-500">El catálogo se actualizará próximamente.</p>
+          <p className="text-center text-neutral-500">No products yet. Add items in Sanity Studio.</p>
         )}
       </Container>
     </section>

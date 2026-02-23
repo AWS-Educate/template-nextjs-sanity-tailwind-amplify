@@ -19,10 +19,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({params}: Props): Promise<Metadata> {
   const {slug} = await params
   const post = await getPostBySlug(slug)
-  if (!post) return {title: 'Post no encontrado'}
+  if (!post) return {title: 'Post not found'}
   return {
     title: post.title,
-    description: post.excerpt || `Lee ${post.title} en el blog de SRF Bogotá.`,
+    description: post.excerpt || `Read ${post.title} on our blog.`,
   }
 }
 
@@ -42,7 +42,7 @@ export default async function BlogPostPage({params}: Props) {
         <h1>{post.title}</h1>
         {post.publishedAt && (
           <p className="text-neutral-500 mb-8">
-            <time>{new Date(post.publishedAt).toLocaleDateString('es-CO', {year: 'numeric', month: 'long', day: 'numeric'})}</time>
+            <time>{new Date(post.publishedAt).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</time>
           </p>
         )}
         {post.mainImage && (
@@ -52,7 +52,7 @@ export default async function BlogPostPage({params}: Props) {
         )}
         <PortableTextRenderer value={post.body} />
         <div className="mt-12 pt-8 border-t border-neutral-200 text-center">
-          <Button href="/blog" variant="outline">Volver al Blog</Button>
+          <Button href="/blog" variant="outline">Back to Blog</Button>
         </div>
       </Container>
     </article>

@@ -1,6 +1,6 @@
 /**
  * Next.js Middleware
- * Handles legacy URL redirects from Wix migration
+ * Handles URL redirects configured in Sanity CMS
  * Uses in-memory cache to avoid Sanity API calls on every request
  */
 

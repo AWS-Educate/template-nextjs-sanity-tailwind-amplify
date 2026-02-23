@@ -5,7 +5,7 @@ import {getAllPosts} from '@/sanity/lib'
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: 'Artículos sobre meditación, Kriya Yoga y las enseñanzas de Paramahansa Yogananda.',
+  description: 'Read our latest articles, news, and updates.',
 }
 
 export default async function BlogPage() {
@@ -16,7 +16,7 @@ export default async function BlogPage() {
       <Container>
         <h1 className="text-center mb-4">Blog</h1>
         <p className="text-center text-neutral-500 max-w-xl mx-auto mb-12">
-          Artículos sobre meditación, espiritualidad y las enseñanzas de Paramahansa Yogananda.
+          Our latest articles, news, and insights.
         </p>
         {posts.length ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -27,12 +27,12 @@ export default async function BlogPage() {
                 description={post.excerpt}
                 image={post.mainImage}
                 href={`/blog/${post.slug.current}`}
-                date={post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('es-CO') : undefined}
+                date={post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US') : undefined}
               />
             ))}
           </div>
         ) : (
-          <p className="text-center text-neutral-500">No hay publicaciones aún. Pronto agregaremos contenido.</p>
+          <p className="text-center text-neutral-500">No posts yet. Create your first post in Sanity Studio.</p>
         )}
       </Container>
     </section>
