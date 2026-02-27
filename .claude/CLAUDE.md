@@ -89,10 +89,36 @@ Modern stack with **Sanity CMS**, **Next.js (App Router)**, and **Tailwind CSS**
   - Crear archivos adicionales por tema si es necesario
 - **NO usar** la carpeta `.claude/projects/.../memory/` del sistema — usar SOLO `/doc/memory/`
 
+### 🔄 3-Phase Model Workflow (CRITICAL)
+
+**DIRECTIVA:** Todo proyecto nuevo sigue un flujo de 3 fases con modelos específicos.
+El documento `doc/memory/phase-handoff.md` es la **memoria persistente** entre fases.
+
+| Fase | Modelo | Comando | Propósito |
+|------|--------|---------|-----------|
+| 1 | **Haiku** | `/model haiku` | Análisis completo del código y proyecto |
+| 2 | **Opus** | `/model opus` | Planificación y diseño del plan de desarrollo |
+| 3 | **Sonnet** | `/model sonnet` | Implementación del plan |
+
+**Protocolo obligatorio entre fases:**
+1. La fase actual **DEBE escribir** su sección en `doc/memory/phase-handoff.md`
+2. La fase actual **DEBE mostrar** el mensaje de transición con instrucciones
+3. La siguiente fase **DEBE leer** `doc/memory/phase-handoff.md` antes de trabajar
+4. **NUNCA reinvestigar** lo que ya documentó una fase anterior
+
+**Recomendación inteligente de modelos (OBLIGATORIO):**
+- Al inicio de CADA tarea, Claude DEBE recomendar qué modelo usar en cada fase
+- La recomendación se basa en tipo de tarea (ver matriz en `model-phases.md`)
+- No toda tarea necesita 3 fases — tareas simples pueden usar 1-2 fases
+- Mostrar recomendación con justificación y esperar aprobación del usuario
+
+**Referencia completa:** `.claude/workflows/model-phases.md`
+
 ### Automated Workflows
 
 Workflows in `.claude/workflows/` guide each process:
 
+- **model-phases.md**: 3-Phase workflow (Haiku→Opus→Sonnet) with memory handoff
 - **git-setup.md**: Structured and safe Git operations (3 modes)
 - **development-standard.md**: Standards for implementation plans
 
