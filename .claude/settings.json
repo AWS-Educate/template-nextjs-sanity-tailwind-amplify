@@ -1,5 +1,6 @@
 {
   "enabledPlugins": {
-    "marketing-skills@marketingskills": true
+    "marketing-skills@marketingskills": true,
+    "skill-creator@claude-plugins-official": true
   }
 }
