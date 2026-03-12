@@ -21,6 +21,9 @@
     "semi": false,
     "singleQuote": true
   },
+  "overrides": {
+    "minimatch@>=9.0.0 <9.0.7": "^9.0.7"
+  },
   "devDependencies": {
     "concurrently": "^9.1.0",
     "esbuild": "^0.27.2",
