@@ -119,8 +119,8 @@ El documento `doc/memory/phase-handoff.md` es la **memoria persistente** entre f
 Workflows in `.claude/workflows/` guide each process:
 
 - **model-phases.md**: 3-Phase workflow (Haiku→Opus→Sonnet) with memory handoff
-- **git-setup.md**: Structured and safe Git operations (3 modes)
 - **development-standard.md**: Standards for implementation plans
+- Git rules live in root `AGENTS.md` (see below), not in this file.
 
 #### Development Standard (Summary)
 Before creating any implementation plan:
@@ -131,33 +131,14 @@ Before creating any implementation plan:
 5. **Ultra-concise plans** (sacrifice grammar if it saves space)
 6. **Create task list** at the end of the plan
 
-### 🔄 Automatic Git Workflow (CRITICAL)
+### 🔄 Git Workflow
 
-**IMPORTANT**: Claude must automatically execute Git workflow when changes are detected.
+**Reemplazado (2026-07-03)**: el workflow anterior de esta sección (commit directo sin worktree,
+"Ask ONCE" para producción) quedó obsoleto y fue sustituido por la plantilla agnóstica definitiva.
 
-#### Claude's Automatic Behavior
-
-When Claude detects repository changes (`git status` not empty):
-
-1. **Analyze changes** and generate smart commit message (Conventional Commits)
-2. **Ask ONCE**: *"I detected pending changes. Execute complete Git workflow?"*
-3. **If user says YES**: Automatically execute entire flow without more questions:
-   - ✅ Commit on `development` with smart message
-   - ✅ Push to `origin/development`
-   - ✅ Ask: *"Merge to main (production)?"*
-   - ✅ If approved: Merge to `main` → Push → Return to `development`
-
-#### Golden Rules
-
-- 🚫 **NEVER edit directly on `main`** (protected production branch)
-- ✅ **ALL changes start on `development`** (daily work branch)
-- ✅ **Merge to `main` requires explicit user approval**
-- ✅ **Always return to `development` when finished**
-
-#### Complete Reference Document
-
-For complete workflow details (3 modes: Setup, Smart Commit, Branch Workflow):
-👉 `.claude/workflows/git-setup.md`
+👉 Reglas completas en `AGENTS.md` (raíz del repo): ramas permanentes, worktree obligatorio,
+interruptor `inicia workflow`, gate de calidad, squash a `development` / merge commit a `main`, y
+pregunta de promoción obligatoria por instancia.
 
 ---
 
