@@ -18,6 +18,13 @@ Modern stack with **Sanity CMS**, **Next.js (App Router)**, and **Tailwind CSS**
 
 **Cómo usar:** Fetch la URL con `WebFetch` y buscar la sección relevante antes de implementar.
 
+**DIRECTIVA — Operaciones Sanity SIEMPRE vía CLI, nunca MCP (2026-07-05) (CRITICAL):** Toda
+interacción operativa con Sanity (consultar/crear/mutar documentos, datasets, export/import,
+`typegen`, deploy del Studio) se hace con el **Sanity CLI** (`npx sanity ...` desde `studio/`).
+**NO usar el MCP de Sanity.** La documentación oficial (`llms-full.txt` arriba) sigue siendo la
+referencia de consulta. (Preferencia de Edwin, 2026-07-05; heredada por todo proyecto
+instanciado desde este template.)
+
 ## 🚀 Quick Start
 
 1. **Clone and Setup**:
@@ -30,12 +37,9 @@ Modern stack with **Sanity CMS**, **Next.js (App Router)**, and **Tailwind CSS**
 2. **Configure Environment Variables**:
    Create `.env.local` in `next-app/` based on `.env.local.example`.
 
-3. **Activate Sanity MCP in Claude Code** (for real-time content access):
-   - Open Claude Code
-   - Cmd/Ctrl + Shift + P → "Configure MCP Servers"
-   - Add Sanity server from `.claude/mcp-servers.json`
-   - Restart Claude Code
-   - See: `doc/MCP-SANITY-SETUP.md` for details
+3. **Sanity access — use the Sanity CLI** (`npx sanity ...` from `studio/`) for all Sanity
+   operations (see CLI directive above). The Sanity MCP setup (`.claude/mcp-servers.json`,
+   `doc/MCP-SANITY-SETUP.md`) is **deprecated — do not use it** (2026-07-05).
 
 4. **Run Development**:
    ```bash
@@ -57,7 +61,7 @@ Modern stack with **Sanity CMS**, **Next.js (App Router)**, and **Tailwind CSS**
 
 **IMPORTANT**: Before any implementation, Claude must:
 
-1. **Consult Sanity MCP** (if configured): Verify schemas and existing content
+1. **Consult Sanity via CLI** (`npx sanity ...`): Verify schemas and existing content (do NOT use the Sanity MCP)
 2. **Read Documentation**: Review project docs for standards
 3. **Create Implementation Plan**: Generate plan with references
 4. **Wait for Approval**: Don't write code until plan is confirmed
@@ -124,7 +128,7 @@ Workflows in `.claude/workflows/` guide each process:
 
 #### Development Standard (Summary)
 Before creating any implementation plan:
-1. **Consult Sanity MCP** first (if available)
+1. **Consult Sanity via CLI** first (`npx sanity documents query ...`, `typegen`)
 2. **Read project documentation** for best practices
 3. **Include `## Documentation & Reference`** section with relevant links
 4. **Verify stack**: Next.js App Router + Sanity CMS + Tailwind CSS
@@ -161,7 +165,7 @@ npm test                   # Tests (if configured)
 
 ### Claude Code Specific Features
 
-- **MCP Integration**: Direct access to Sanity MCP for real-time queries (if configured)
+- **Sanity CLI Integration**: Query and operate Sanity via `npx sanity ...` (Sanity MCP deprecated — see directive)
 - **Context Awareness**: Full access to project context and documentation
 - **Automated Workflows**: Automatic following of defined workflows
 
@@ -169,7 +173,7 @@ npm test                   # Tests (if configured)
 
 ### 1. AI-Assisted Development
 
-- **Start with MCP**: Consult Sanity MCP before any schema or content changes (if available)
+- **Start with Sanity CLI**: Consult Sanity via CLI before any schema or content changes (never the MCP)
 - **Concise Plans**: Implementation plans should be ultra-concise
 - **Context-First**: Read relevant documentation before proposing solutions
 
@@ -223,7 +227,7 @@ npm test                   # Tests (if configured)
 
 ```mermaid
 graph TD
-    A[New Task] --> B[Consult Sanity MCP]
+    A[New Task] --> B[Consult Sanity via CLI]
     B --> C[Read Documentation]
     C --> D[Review Existing Components]
     D --> E[Create Implementation Plan]
